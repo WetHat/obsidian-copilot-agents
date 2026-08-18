@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 0
 copilot-command-model-key: gpt-5.6-luna|openai
-copilot-command-last-used: 1786954600396
+copilot-command-last-used: 1787081987463
 ---
 ## Task
 Generate a high-signal, actionable summary from notes shown on the Obsidian Bases table in {activeNote}.
@@ -15,7 +15,8 @@ Generate a high-signal, actionable summary from notes shown on the Obsidian Base
 ## Requirements
 - Output must:
 	- ignore prior chat history or external context not included in the input.
-	- group content by meaningful, inferred categories (e.g., Security, DevOps, AI, Infrastructure, Research, Ideas, Personal, etc.).
+	- group content by meaningful, inferred categories (e.g., Security, DevOps, AI, Infrastructure, Research, Ideas, Personal, etc.). 
+	- group content must be structured as list where each list item starts with a note reference (wikilink) followed by related content.; A note can be referenced only once per group
 	- contain only high-signal information: key facts, insights, notable commands/configs, risks, constraints, and actionable takeaways.
 	- exclude fillers, repetition, trivial steps, and generic background.
 	- use smart brevity: short sections, dense bullets, one idea per bullet, minimal narrative.
