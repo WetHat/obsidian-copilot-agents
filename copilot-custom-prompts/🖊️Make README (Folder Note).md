@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 260
 copilot-command-model-key: gpt-5.6-terra|openai
-copilot-command-last-used: 1786980411491
+copilot-command-last-used: 1787426280654
 ---
 ## Task
 Analyze a README-type note for a given folder and, by referencing related notes and content across the vault, determine the folder’s intended purpose. Based on your findings, provide actionable advice on how to use this folder effectively, including recommendations for what types of content or notes should be added to maximize its value.

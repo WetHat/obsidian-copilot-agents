@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 0
 copilot-command-model-key: gpt-5.6-terra|openai
-copilot-command-last-used: 1786644436659
+copilot-command-last-used: 1787157834914
 ---
 # Task
 
@@ -15,7 +15,6 @@ The scorecard will be used by prompt engineers to determine the best LLM for wor
 
 Reference Materials:
 
-- [[Obsidian flavored Markdown]]
 - [[Prompt Archetypes]]
 - [[Archetype Benchmark Mapping Schema]]
 - [[Models]]
@@ -24,7 +23,7 @@ Reference Materials:
 
 - Only models from [[Models]] are evaluated
 - All scoring must map directly to the 'Archetype' and 'Scoring Dimensions' defined in [[Prompt Archetypes]].
-- All output must comply with [[Obsidian flavored Markdown]]
+- All output must be GfM
 - Produce a concise scorecard with one row per archetype and columns for each LLM from [[Models]]
 - Each archetype must be individually scored (0–6) across all models from [[Models]]. using the Scoring Bands definition.
 - Ensure all outputs are accurate, complete, and relevant to the request.

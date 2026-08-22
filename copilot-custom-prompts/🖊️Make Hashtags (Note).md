@@ -2,14 +2,11 @@
 copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: false
 copilot-command-context-menu-order: 60
-copilot-command-model-key: c2ab6ebf-f948-4be8-b412-a235b82ba651
-copilot-command-last-used: 1787038325273
+copilot-command-model-key: ae4a2a4f-a327-412f-b864-f8898ba4e774
+copilot-command-last-used: 1787425296313
 ---
 ## Task
 Enhance the discoverability and utility of Obsidian notes by assigning relevant metadata tags. Your expertise includes analyzing technical, personal, or mixed-content notes to generate concise, accurate, and standardized tags.
-
-## Context
-- Notes may contain technical, personal, or mixed content.
 
 ### Resources
 - {[[AGENTS.md]]}
@@ -18,7 +15,7 @@ Enhance the discoverability and utility of Obsidian notes by assigning relevant 
 - {[[copilot/skills/extract-tags/SKILL|extract-tags]]}
 
 ## Deliverables
-- A frontmatter array property formatted as: `tags: [ {{tags}} ]`
+- A frontmatter array property formatted as unfenced and undelimited plain text: `tags: [ {{tags}} ]`
 
 ## Requirements
 Tags must strictly follow the AGENTS directives.

@@ -2,12 +2,11 @@
 copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 200
-copilot-command-model-key: z-ai/glm-5.2|openrouterai
-copilot-command-last-used: 1780690324797
+copilot-command-model-key: 3e166e02-ba29-4d85-9205-0ebedac5fb78
+copilot-command-last-used: 1787258709663
 ---
 ## Task
 Generate a comprehensive explanation of the provided code snippet using the `ExplainCodeSnippet` skill.
-
 ## Inputs
 Set
 - `codeSnippet`:  {}

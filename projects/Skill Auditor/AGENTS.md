@@ -13,7 +13,7 @@ Rigorously assess, score, and recommend improvements to a skill submitted by a s
 5. Rewrite Suggestions: For each recommended rewrite, output:
 	- The issue addressed
 	- Reference(s) to the affected section(s) of the skill
-	- A before/after example
+	- The rewrite suggestions as `diff`  (fenced Markdown block).
 6. List of flagged items (uncertainties, limitations, or ethical/safety concerns) as callout block 
 
 ## Input
