@@ -12,20 +12,27 @@ This repository is a curated collection of reusable AI-assistant assets for use 
 
 ```
 ├── copilot.md                    # Index note: prompt placement criteria & context databases
+├── opencode.json                 # OpenCode configuration for the skills directory
 ├── skills/                       # Agent skills (SKILL.md + optional CLI wrappers)
 ├── copilot-custom-prompts/       # Slash-command / context-menu prompts
 ├── projects/                     # Copilot project system prompts
 ├── system-prompts/               # Migrated custom system prompts
 ├── memory/                       # Saved memories & recent conversation summaries
-├── copilot-conversations/        # Archived agent conversations
+├── copilot-conversations/        # Archived agent conversation transcripts
 └── LICENSE                       # MIT
 ```
 
+## Configuration
+
+`opencode.json` adds `skills/` to OpenCode's skill search path. Folder-based skills are defined by a `SKILL.md` file; standalone Markdown files in the same directory are reusable prompt assets.
+
 ## Skills
 
-Skills live in `skills/`. Each skill is a folder containing a `SKILL.md` (and, where needed, cross-platform CLI wrapper scripts) or a standalone `.md` file.
+Skills live in `skills/`. Each entry is either a folder containing a `SKILL.md` (and, where needed, cross-platform CLI wrapper scripts) or a standalone `.md` file.
 
-### Web & media (Copilot Plus)
+### Web & media
+
+The four `copilot-*` skills require an active Copilot Plus license. `find-web-resources` is a general resource-finding skill and does not depend on Copilot Plus.
 
 | Skill | Description |
 | --- | --- |
@@ -33,6 +40,7 @@ Skills live in `skills/`. Each skill is a folder containing a `SKILL.md` (and, w
 | `copilot-web-fetch` | Fetch and read the full contents of a specific web page as clean Markdown. |
 | `copilot-fetch-x` | Fetch the content of an X (Twitter) post. |
 | `copilot-youtube-transcript` | Fetch the transcript of a YouTube video. |
+| `find-web-resources` | Find and verify relevant web resources for Markdown content. |
 
 ### Local document processing (Miyo)
 
@@ -97,7 +105,7 @@ Skills live in `skills/`. Each skill is a folder containing a `SKILL.md` (and, w
 
 - **`system-prompts/`** — Migrated custom system prompts, e.g. context-specific overrides for Obsidian-flavored Markdown and skill invocation syntax (`|>`).
 - **`memory/`** — Saved memories (user identity, communication preferences) and summaries of recent conversations.
-- **`copilot-conversations/`** — Archived agent conversations, indexed by `copilot-conversations.md`.
+- **`copilot-conversations/`** — Archived agent conversation transcripts.
 
 ## License
 
