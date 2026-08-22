@@ -10,7 +10,7 @@ This repository is a curated collection of reusable AI-assistant assets for use 
 
 ## Repository Structure
 
-```
+```text
 ├── copilot.md                    # Index note: prompt placement criteria & context databases
 ├── opencode.json                 # OpenCode configuration for the skills directory
 ├── skills/                       # Agent skills (SKILL.md + optional CLI wrappers)
