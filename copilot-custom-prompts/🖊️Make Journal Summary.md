@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 0
 copilot-command-model-key: gpt-5.6-luna|openai
-copilot-command-last-used: 1787378601624
+copilot-command-last-used: 1787464277136
 ---
 ## Task
 Generate a high-signal, actionable summary from notes shown on the Obsidian Bases table in {activeNote}.

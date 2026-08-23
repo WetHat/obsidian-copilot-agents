@@ -4,7 +4,7 @@ copilot-project-name: Prompt Perfecter
 copilot-project-description: "Review and perfect prompts Trigger: Review..."
 copilot-project-model-key: google/gemini-3.5-flash|openrouterai
 copilot-project-temperature: 0
-copilot-project-max-tokens: 32467
+copilot-project-max-tokens: 128000
 copilot-project-inclusions: ""
 copilot-project-exclusions: ""
 copilot-project-web-urls: []

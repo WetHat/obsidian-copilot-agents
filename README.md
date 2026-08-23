@@ -1,5 +1,3 @@
-# obsidian-copilot-agents
-
 Prompts, skills, and project system prompts for the [Obsidian Copilot](https://github.com/logancyang/obsidian-copilot) plugin.
 
 This repository is a curated collection of reusable AI-assistant assets for use inside an Obsidian vault:
@@ -8,7 +6,7 @@ This repository is a curated collection of reusable AI-assistant assets for use 
 - **Custom prompts** — slash-command and context-menu prompts for common writing, rewriting, and analysis tasks.
 - **Project system prompts** — persistent system prompts bound to Copilot projects, each with its own model, temperature, and context inclusions.
 
-## Repository Structure
+# Repository Structure
 
 ```text
 ├── copilot.md                    # Index note: prompt placement criteria & context databases
@@ -22,15 +20,15 @@ This repository is a curated collection of reusable AI-assistant assets for use 
 └── LICENSE                       # MIT
 ```
 
-## Configuration
+# Configuration
 
 `opencode.json` adds `skills/` to OpenCode's skill search path. Folder-based skills are defined by a `SKILL.md` file; standalone Markdown files in the same directory are reusable prompt assets.
 
-## Skills
+# Skills
 
 Skills live in `skills/`. Each entry is either a folder containing a `SKILL.md` (and, where needed, cross-platform CLI wrapper scripts) or a standalone `.md` file.
 
-### Web & media
+## Web & Media
 
 The four `copilot-*` skills require an active Copilot Plus license. `find-web-resources` is a general resource-finding skill and does not depend on Copilot Plus.
 
@@ -42,14 +40,14 @@ The four `copilot-*` skills require an active Copilot Plus license. `find-web-re
 | `copilot-youtube-transcript` | Fetch the transcript of a YouTube video. |
 | `find-web-resources` | Find and verify relevant web resources for Markdown content. |
 
-### Local document processing (Miyo)
+## Local Document Processing (Miyo)
 
 | Skill | Description |
 | --- | --- |
 | `miyo-parse` | Parse a local PDF or EPUB into Markdown/text with the local Miyo CLI — no cloud parser, no vault indexing required. |
 | `miyo-search` | Semantic (meaning-based) search over the vault via the local Miyo app. |
 
-### Obsidian authoring
+## Obsidian Authoring
 
 | Skill | Description |
 | --- | --- |
@@ -60,7 +58,7 @@ The four `copilot-*` skills require an active Copilot Plus license. `find-web-re
 | `mermaid-diagram` | Choose the optimal Mermaid diagram type for a specification and generate or edit valid Mermaid code. |
 | `symposium-publish` | Publish, update, or withdraw a Markdown note through Symposium's host-owned review flow. |
 
-### Content extraction
+## Content Extraction
 
 | Skill | Description |
 | --- | --- |
@@ -72,7 +70,7 @@ The four `copilot-*` skills require an active Copilot Plus license. `find-web-re
 | `GroupListByTheme` | Group list items by theme. |
 | `MakeWebResourceList` | Compile a list of web resources. |
 
-## Custom Prompts
+# Custom Prompts
 
 `copilot-custom-prompts/` contains prompts for the Copilot slash command and note context menu, organized by use case:
 
@@ -80,7 +78,7 @@ The four `copilot-*` skills require an active Copilot Plus license. `find-web-re
 - **Analysis & learning** — `LLM Tuning`, `Archetype LLM Ranking`, `Article Evaluator`, `Article Insights`, `Skill Documenter`, `Make Canvas Concept Map`, `Make Image Prompt`, `Cybersecurity Briefing`
 - **Writing & rewriting** — headline, hashtags, journal summary, takeaways, abstracts, definitions (callout/footnote/inline), Mermaid concept maps & diagrams, svgbob diagrams, symlinks, README (folder note), and rewrite variants (callout, codeblock, LaTeX math, sorted definition list, structured Markdown, table, tweet, longer, shorter, simplify, translate EN/DE, emojify, fix grammar, Jeopardy)
 
-## Projects
+# Projects
 
 `projects/` holds Copilot project system prompts. Each project defines its own model, temperature, max tokens, and context inclusions:
 
@@ -101,12 +99,12 @@ The four `copilot-*` skills require an active Copilot Plus license. `find-web-re
 | `WetHat Lab Assistant v3` | Create end-user documentation for the tss-tracker. |
 | `Writing Assistant v1` | Take a sketch to a production-ready article. |
 
-## Other Directories
+# Other Directories
 
 - **`system-prompts/`** — Migrated custom system prompts, e.g. context-specific overrides for Obsidian-flavored Markdown and skill invocation syntax (`|>`).
 - **`memory/`** — Saved memories (user identity, communication preferences) and summaries of recent conversations.
 - **`copilot-conversations/`** — Archived agent conversation transcripts.
 
-## License
+# License
 
 [MIT](LICENSE) © 2026 Peter Ernst

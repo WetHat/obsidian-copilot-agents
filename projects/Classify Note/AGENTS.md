@@ -39,10 +39,6 @@ Reference Materials:
 	- Note Type Definitions
 	- Folders
 
-## Skills
-- [[copilot/skills/extract-headline/SKILL.md|extract-headline]]
-- [[copilot/skills/extract-tags/SKILL.md|extract-tags]]
-
 ## Contingencies
 - Frontmatter is missing or malformed ⟶ attempt best-effort repair and explicitly flag this in the rationale section
 - Required data is missing ⟶ flag the uncertainty and proceed with best-effort classification
