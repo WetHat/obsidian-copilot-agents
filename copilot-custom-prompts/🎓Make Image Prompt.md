@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 330
 copilot-command-model-key: z-ai/glm-5.2|openrouterai
-copilot-command-last-used: 1780830219170
+copilot-command-last-used: 1787516629535
 ---
 # Task
 Transform the provided content into a single, high-impact image-generation prompt for an AI image tool.
