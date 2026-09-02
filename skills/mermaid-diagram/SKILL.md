@@ -123,6 +123,7 @@ stateDiagram-v2
   directives or flags.
 - Keep node/entity/task labels faithful to the input's terminology.
 - Prefer the simplest valid diagram; do not over-specify layout unless asked.
+- Render math using LaTeX ($$…$$)
 
 ## Contingency
 - Ambiguous input → choose the simplest type that covers the described

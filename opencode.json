@@ -2,5 +2,19 @@
   "$schema": "https://opencode.ai/config.json",
   "skills": {
     "paths": ["~/OneDrive/Documents/ObsidianVaults/WetHat Lab/copilot/skills"]
+  },
+    "mcp": {
+    "firecrawl": {
+      "type": "local",
+      "command": ["npx", "-y", "firecrawl-mcp"],
+      "enabled": true,
+      "timeout": 60000
+    },
+    "docker-mcp": {
+      "type": "local",
+      "command": ["docker", "mcp", "gateway", "run", "--profile", "obsidian"],
+      "enabled": true,
+      "timeout": 60000
+    }
   }
 }

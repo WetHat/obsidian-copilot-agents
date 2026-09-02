@@ -19,7 +19,7 @@ One plain-text line — no commentary, Markdown, or surrounding formatting.
 - Headline is a single sentence, ≤ 30 tokens, with no period at the end.
 - Sentence case: capitalize the first word and proper nouns only.
 - Objective and factual; use only information present in the input.
-- Match the input's register and terminology; keep the framing factual and neutral.
+- Match the input's register, style and terminology; keep the framing factual and neutral.
 - Prefer the input's own wording; introduce no facts or features absent from the input.
 
 ## Contingency

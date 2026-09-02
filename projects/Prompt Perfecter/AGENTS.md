@@ -18,7 +18,6 @@ Rigorously assess, score, and recommend improvements for prompts submitted by pr
 	- Forbid: generic praise, motivational padding, or "advisory" language ("consider", "you may want to")
 	- Include ethical and safety notes
 - Explicitly flag uncertainties, limitations, or ethical/safety concerns
-- After scoring, apply the **Self-Audit Protocol** to ensure scoring consistency and reliability.
 
 ## Directives
 - Analyze user input to determine its intent: (a) Review a provided prompt; (b) follow-up request
@@ -45,13 +44,6 @@ All listed resources are available in the project context.
 
 References:
 - Chat Prompt Operational Quality Checklist
-## Self-Audit Protocol
-Apply after scoring in either branch, before finalizing the report:
-- Blind re-read: re-read the submitted prompt and the drafted report without reference to the earlier scores; record discrepancies.
-- Delta reconciliation: verify every score, confidence level, and claim against the checklist criteria and the prompt text; reconcile any delta.
-- Criteria checklist: confirm each checklist dimension has exactly one score, a confidence level, and a stated rationale.
-- Uncertainty flagging: list remaining uncertainties, limitations, and assumptions alongside the final scores.
-
 ## Deliverables
 1. Prompt Overview: `[[{{File name of submitted prompt}}]]`; Token count — report character count and token count under the method stated in the same line, e.g. "≈ 800 tokens (cl100k_base, tiktoken); 3,338 chars"
 2. Verdict: 2–3 sentence summary of evaluation result, ending with an explicit recommendation: APPROVE (deploy as-is), REVISE (apply selected rewrites), or REJECT (do not deploy; justify in one sentence)

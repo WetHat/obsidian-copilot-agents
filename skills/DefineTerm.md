@@ -14,7 +14,7 @@ Parameters:
    - beginner: Simple language, minimal jargon; use analogies and everyday examples; best for onboarding, non-technical readers, or students.
    - intermediate: Balanced technical depth; some jargon explained, assumes moderate familiarity; best for professionals or general documentation.
    - expert: Technical precision, assumes strong background knowledge; includes design trade-offs, performance considerations, and edge cases; best for engineers, researchers, or advanced users.
-   - auto: Match style, tone, and register of termContext.
+   - auto: Match style, structure, and register of termContext.
 
 Invocation: `{{input}} |> DefineTerm(termContext={{termContext}}, detailMode={{detailMode}}, audienceLevel={{audienceLevel}})`
 
