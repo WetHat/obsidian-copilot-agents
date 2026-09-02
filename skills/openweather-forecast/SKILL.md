@@ -1,7 +1,7 @@
 ---
 name: openweather-forecast
 description: >-
-  Casual weather forecast for a given location, using the local
+  Casual/funny weather forecast for a given location, using the local
   OpenWeatherMap MCP server (Docker MCP Toolkit). Use when the user asks
   about weather, forecast, temperature, rain, whether to take an umbrella,
   or today/tomorrow/weekend conditions — or explicitly asks for the
@@ -61,7 +61,7 @@ The tool prints two text blocks:
 Convert forecast timestamps to the forecast location's local time (use
 Europe/Berlin for the user's home region). Group entries per local day,
 then split each day into
-three 8-hour spans — `00–08`, `08–16`, `16–24` local — and pool each span's
+three 8-hour spans — `00h–08h`, `08h–16h`, `16h–24h` local — and pool each span's
 `Temp` values and conditions. For every span derive:
 
 - Temp: the min–max range of the span's `Temp` values, rounded to whole
@@ -91,7 +91,7 @@ Structure (keep it tight — this is a performance, not a report):
    Table shape (values illustrative):
 
    ```markdown
-   | Date | 00–08 | 08–16 | 16–24 |
+   | Date | 00h–08h | 08h–16h | 16h–24h |
    | --- | --- | --- | --- |
    | Thu, Sep 3 | 14–16 °C, light rain | 18–21 °C, broken clouds | 15–17 °C, clear sky |
    | Fri, Sep 4 | 12 °C, few clouds | 19–24 °C, clear sky | 16–18 °C, few clouds |
