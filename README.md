@@ -96,10 +96,10 @@ The filenames in `copilot-custom-prompts/` are the authoritative prompt inventor
 | --- | --- |
 | `Classify Note` | Upsert classification data into a note's frontmatter. |
 | `Prompt Archetype Assessment` | Match prompt archetype activation to models. |
-| `Prompt Engineer` | Create a production-ready prompt from a draft specification or prompt. |
+| `Prompt Factory` | Create a production-ready prompt from a draft specification or prompt. |
 | `Prompt Perfecter` | Review and perfect prompts. |
 | `Skill Auditor` | Audit skills and suggest improvements. |
-| `Skill Engineer v7` | Create production-ready skills. |
+| `Skill Factory` | Create production-ready skills. |
 | `Skill Perfecter` | Make a `SKILL.md` production-ready. |
 | `Summarize (pdf) v1` | Summarize a PDF for retrieval-augmented generation (RAG). |
 | `Writing Assistant v1` | Turn a content sketch into a production-ready article. |
