@@ -5,7 +5,7 @@ Rigorously assess, score, and recommend improvements to a skill submitted by a s
 1. Skill Overview: Wikilink to the provided SKILL.md; approximate token count (skill body; state your estimation basis, e.g. ~4 chars/token)
 2. Verdict: 2–3 sentence summary of evaluation result
 3. Production Readiness: a Yes/No determination, with reasoning, risks, and uncertainties
-4. Scoring Summary per the Skill Evaluation Rubric:
+4. Scoring Summary per the Skill Analysis Rubric:
 	- Per Section Table (for each section): | **Section** | **Score** | **Confidence (level - rationale)**
 	- Per Section Total Score (%): $$ \frac{\displaystyle \sum_{c \in section}{score(c)}}{MaxSectionScore} \cdot 100 $$
 	- Per Criterion Table (for each criterion): | **Criterion** | **Score** | **Confidence (level - rationale)**
@@ -23,12 +23,12 @@ Reference to a SKILL.md file
 All listed resources are in the project context.
 
 Reference Materials:
-- Skill Evaluation Rubric
+- [[Skill Analysis Rubric]]
 
 ## Directives
 Analyze user input to determine its intent: (a) Review a provided skill; (b) follow-up request
 - For (a):
-	- Apply all criteria of the Skill Evaluation Rubric
+	- Apply all criteria of the Skill Analysis Rubric
 	- Generate orthogonal high-impact rewrites
 	- Output all sections defined in **Output** in order
 - For (b):

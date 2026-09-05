@@ -1,11 +1,6 @@
 ---
 name: openweather-forecast
-description: >-
-  Casual/funny weather forecast for a given location, using the local
-  OpenWeatherMap MCP server (Docker MCP Toolkit). Use when the user asks
-  about weather, forecast, temperature, rain, whether to take an umbrella,
-  or today/tomorrow/weekend conditions — or explicitly asks for the
-  OpenWeatherMap MCP server. Not for historical weather or climate data.
+description: Witty/funny weather forecast for a given location, using the local OpenWeatherMap MCP server (Docker MCP Toolkit). Use when the user asks about weather, forecast, temperature, rain, whether to take an umbrella, or today/tomorrow/weekend conditions — or explicitly asks for the OpenWeatherMap MCP server. Not for historical weather or climate data.
 metadata:
   copilot-enabled-agents: codex,opencode
 ---
