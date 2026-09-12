@@ -36,11 +36,10 @@ metadata:
 	  ```
 	 (or execute in-process with `& "<skill-dir>/scripts/scrape-web-content.ps1" -Url "<url>" -Format "<format>" -TimeoutSec <timeoutSec>` when already inside an active PowerShell session).
 	- On macOS/Linux: execute `scripts/scrape-web-content.sh "<url>" "<format>" <timeoutSec>`.
-	- Legacy fallback: execute `scrape-web-content.cmd "<url>" "<format>" "<timeoutSec>"` only when direct PowerShell execution is unavailable.
-4. Capture the Windmill REST response payload containing `ttr`, `source`, `article`, and `frontmatter`.
-5. Validate that the response is an object with `ttr` (number), `source` (non-empty string), `article` (string), and `frontmatter` (object). Return a descriptive error for missing or incorrectly typed fields.
-6. Transform and format the validated payload into the target output structure.
-7. Return the formatted Markdown or JSON result.
+	- Legacy fallback (Windows cmd): execute `scripts/scrape-web-content.cmd "<url>" "<format>" "<timeoutSec>"` only when direct PowerShell execution is unavailable.
+4. Capture standard output from the execution script, which emits the pre-formatted Markdown or JSON payload directly.
+5. If the script exits with non-zero status or outputs an error stream, map the error message to `## Contingencies`.
+6. Return the captured Markdown or JSON result directly without secondary transformation.
 
 ## Requirements
 
@@ -61,34 +60,3 @@ metadata:
 - Malformed or incomplete success payload ⟶ return an error identifying the missing or invalid response property.
 - Conflicting constraints ⟶ prioritize data fidelity and security over formatting preferences.
 - Forbidden or restricted target URL ⟶ refuse request and provide explanation.
-
-## Example
-
-### Input
-- `url`: `https://www.marktechpost.com/2026/08/26/what-would-have-to-be-true-for-agentic-coding-to-replace-junior-engineers/`
-- `format`: `markdown`
-
-### Output
-```markdown
----
-type: article
-link: "https://www.marktechpost.com/2026/08/26/what-would-have-to-be-true-for-agentic-coding-to-replace-junior-engineers/"
-reading_time: 5
-authors: ["Asif Razzaq", "https://www.facebook.com/MarkTechPost/", "@https://twitter.com/asifrazzaq1988"]
-site: "MarkTechPost"
-keywords: []
-published: 2026-08-26T14:20:35+00:00
-publisher: "https://www.facebook.com/MarkTechPost/"
----
-> [!info]+ What Would Have to Be True for Agentic Coding to Replace Junior Engineers
-> ![image|float:right|200](https://www.marktechpost.com/wp-content/uploads/2026/08/blog619100-33.png)
-> METR, OpenAI and Stanford data tested against four conditions for agentic coding replacing junior engineers. Three still fail.
-
-I read every major model release. Most of them ship a coding number.
-...
-```
-
-## Resources
-
-- See [PowerShell Scraping Script](scripts/scrape-web-content.ps1) for the executable scraping implementation.
-- See [Windmill API Reference](references/api-reference.md) for endpoint specification, payload schemas, and environment configuration.
