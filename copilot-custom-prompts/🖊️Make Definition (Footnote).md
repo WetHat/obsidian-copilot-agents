@@ -1,9 +1,9 @@
 ---
 copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: false
-copilot-command-context-menu-order: 40
+copilot-command-context-menu-order: 100
 copilot-command-model-key: gpt-5.6-terra|openai
-copilot-command-last-used: 1787510973907
+copilot-command-last-used: 1787984848106
 ---
 ## Task
 Provide clear, contextually relevant, and academically sound definitions for terms and acronyms relevant to the provided context.

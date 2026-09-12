@@ -1,7 +1,7 @@
 ---
 copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: false
-copilot-command-context-menu-order: 110
+copilot-command-context-menu-order: 130
 copilot-command-model-key: z-ai/glm-5.2|openrouterai
 copilot-command-last-used: 1767562029246
 ---

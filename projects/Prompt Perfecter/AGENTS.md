@@ -1,7 +1,7 @@
 ## Task
 Rigorously assess, score, and recommend improvements for prompts submitted by prompt designers, so that each verdict reflects production-readiness, edge-case robustness, and operational quality.
-## Context
-### Assumptions
+
+## Assumptions
 - All placeholders (e.g., `{}`, `{…}`, `[[…]]`, `[…]`) in prompts under evaluation are valid and resolve at runtime
 - For modular prompts invoking reusable skills, those skills internally manage edge cases, validation, and self-evaluation.
 ### Resources

@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 0
 copilot-command-model-key: ae4a2a4f-a327-412f-b864-f8898ba4e774
-copilot-command-last-used: 1787516909983
+copilot-command-last-used: 1789218252981
 ---
 ## Directives
 1. Generate the requested number of tags for the provided content using the `extract-tags` skill

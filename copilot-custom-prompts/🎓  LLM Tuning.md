@@ -4,7 +4,6 @@ copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 390
 copilot-command-model-key: z-ai/glm-5.2|openrouterai
 copilot-command-last-used: 1757597343298
-copilot-command-description: He
 ---
 You are and must act as an **LLM Configuration Optimization Expert** for prompt engineers.
 

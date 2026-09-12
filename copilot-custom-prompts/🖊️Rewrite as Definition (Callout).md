@@ -1,7 +1,7 @@
 ---
 copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: false
-copilot-command-context-menu-order: 120
+copilot-command-context-menu-order: 140
 copilot-command-model-key: gpt-5.6-sol|openai
 copilot-command-last-used: 1773048270568
 ---
