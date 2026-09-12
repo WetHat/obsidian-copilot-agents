@@ -9,17 +9,14 @@ metadata:
 
 # Scrape Web Content
 
-Scrape web articles and extract high-fidelity Markdown and metadata via a local Windmill REST endpoint.
-
 ## Output
 
 - Markdown document (default) or structured JSON object.
 - Markdown format structure:
-  - YAML frontmatter containing `type`, `link`, `reading_time`, `authors`, `site`, `keywords`, `published`, `publisher`, and `expires`.
-  - Info callout `> [!info]+ <title>` displaying article title, hero image, and description.
-  - High-fidelity Markdown article body.
-- JSON format structure:
-  - Object with properties `ttr` (number), `source` (string), `article` (string), and `frontmatter` (object).
+	- YAML frontmatter containing `type`, `link`, `reading_time`, `authors`, `site`, `keywords`, `published`, `publisher`, and `expires`.
+	- Info callout `> [!info]+ <title>` displaying article title, hero image, and description.
+	- High-fidelity Markdown article body.
+- JSON format structure: Object with properties `ttr` (number), `source` (string), `article` (string), and `frontmatter` (object).
 
 ## Input
 
@@ -33,13 +30,13 @@ Scrape web articles and extract high-fidelity Markdown and metadata via a local 
 1. Validate input `url` string to ensure non-empty HTTP or HTTPS address.
 2. Apply parameter defaults for omitted optional arguments (`format: markdown`, `timeoutSec: 60`).
 3. Execute the scraping script:
-   - On Windows (primary): spawn a direct PowerShell subprocess:
-     ```powershell
-     powershell -NoProfile -ExecutionPolicy Bypass -File "<skill-dir>/scripts/scrape-web-content.ps1" -Url "<url>" -Format "<format>" -TimeoutSec <timeoutSec>
-     ```
-     (or execute in-process with `& "<skill-dir>/scripts/scrape-web-content.ps1" -Url "<url>" -Format "<format>" -TimeoutSec <timeoutSec>` when already inside an active PowerShell session).
-   - On macOS/Linux: execute `scripts/scrape-web-content.sh "<url>" "<format>" <timeoutSec>`.
-   - Legacy fallback: execute `scrape-web-content.cmd "<url>" "<format>" "<timeoutSec>"` only when direct PowerShell execution is unavailable.
+	- On Windows (primary): spawn a direct PowerShell subprocess:
+	  ```powershell
+	  powershell -NoProfile -ExecutionPolicy Bypass -File "<skill-dir>/scripts/scrape-web-content.ps1" -Url "<url>" -Format "<format>" -TimeoutSec <timeoutSec>
+	  ```
+	 (or execute in-process with `& "<skill-dir>/scripts/scrape-web-content.ps1" -Url "<url>" -Format "<format>" -TimeoutSec <timeoutSec>` when already inside an active PowerShell session).
+	- On macOS/Linux: execute `scripts/scrape-web-content.sh "<url>" "<format>" <timeoutSec>`.
+	- Legacy fallback: execute `scrape-web-content.cmd "<url>" "<format>" "<timeoutSec>"` only when direct PowerShell execution is unavailable.
 4. Capture the Windmill REST response payload containing `ttr`, `source`, `article`, and `frontmatter`.
 5. Validate that the response is an object with `ttr` (number), `source` (non-empty string), `article` (string), and `frontmatter` (object). Return a descriptive error for missing or incorrectly typed fields.
 6. Transform and format the validated payload into the target output structure.
@@ -67,28 +64,29 @@ Scrape web articles and extract high-fidelity Markdown and metadata via a local 
 
 ## Example
 
-- Input:
-  - `url`: `https://www.marktechpost.com/2026/08/26/what-would-have-to-be-true-for-agentic-coding-to-replace-junior-engineers/`
-  - `format`: `markdown`
-- Output:
-  ```markdown
-  ---
-  type: article
-  link: "https://www.marktechpost.com/2026/08/26/what-would-have-to-be-true-for-agentic-coding-to-replace-junior-engineers/"
-  reading_time: 5
-  authors: ["Asif Razzaq", "https://www.facebook.com/MarkTechPost/", "@https://twitter.com/asifrazzaq1988"]
-  site: "MarkTechPost"
-  keywords: []
-  published: 2026-08-26T14:20:35+00:00
-  publisher: "https://www.facebook.com/MarkTechPost/"
-  ---
-  > [!info]+ What Would Have to Be True for Agentic Coding to Replace Junior Engineers
-  > ![image|float:right|200](https://www.marktechpost.com/wp-content/uploads/2026/08/blog619100-33.png)
-  > METR, OpenAI and Stanford data tested against four conditions for agentic coding replacing junior engineers. Three still fail.
+### Input
+- `url`: `https://www.marktechpost.com/2026/08/26/what-would-have-to-be-true-for-agentic-coding-to-replace-junior-engineers/`
+- `format`: `markdown`
 
-  I read every major model release. Most of them ship a coding number.
-  ...
-  ```
+### Output
+```markdown
+---
+type: article
+link: "https://www.marktechpost.com/2026/08/26/what-would-have-to-be-true-for-agentic-coding-to-replace-junior-engineers/"
+reading_time: 5
+authors: ["Asif Razzaq", "https://www.facebook.com/MarkTechPost/", "@https://twitter.com/asifrazzaq1988"]
+site: "MarkTechPost"
+keywords: []
+published: 2026-08-26T14:20:35+00:00
+publisher: "https://www.facebook.com/MarkTechPost/"
+---
+> [!info]+ What Would Have to Be True for Agentic Coding to Replace Junior Engineers
+> ![image|float:right|200](https://www.marktechpost.com/wp-content/uploads/2026/08/blog619100-33.png)
+> METR, OpenAI and Stanford data tested against four conditions for agentic coding replacing junior engineers. Three still fail.
+
+I read every major model release. Most of them ship a coding number.
+...
+```
 
 ## Resources
 
