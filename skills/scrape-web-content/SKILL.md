@@ -32,10 +32,18 @@ Scrape web articles and extract high-fidelity Markdown and metadata via a local 
 
 1. Validate input `url` string to ensure non-empty HTTP or HTTPS address.
 2. Apply parameter defaults for omitted optional arguments (`format: markdown`, `timeoutSec: 60`).
-3. Execute the local scraping script via [PowerShell Script](scripts/scrape-web-content.ps1), Windows launcher `scrape-web-content.cmd`, or shell script `scrape-web-content.sh`.
+3. Execute the scraping script:
+   - On Windows (primary): spawn a direct PowerShell subprocess:
+     ```powershell
+     powershell -NoProfile -ExecutionPolicy Bypass -File "<skill-dir>/scripts/scrape-web-content.ps1" -Url "<url>" -Format "<format>" -TimeoutSec <timeoutSec>
+     ```
+     (or execute in-process with `& "<skill-dir>/scripts/scrape-web-content.ps1" -Url "<url>" -Format "<format>" -TimeoutSec <timeoutSec>` when already inside an active PowerShell session).
+   - On macOS/Linux: execute `scripts/scrape-web-content.sh "<url>" "<format>" <timeoutSec>`.
+   - Legacy fallback: execute `scrape-web-content.cmd "<url>" "<format>" "<timeoutSec>"` only when direct PowerShell execution is unavailable.
 4. Capture the Windmill REST response payload containing `ttr`, `source`, `article`, and `frontmatter`.
-5. Transform and format the received payload into the target output structure.
-6. Return the formatted Markdown or JSON result.
+5. Validate that the response is an object with `ttr` (number), `source` (non-empty string), `article` (string), and `frontmatter` (object). Return a descriptive error for missing or incorrectly typed fields.
+6. Transform and format the validated payload into the target output structure.
+7. Return the formatted Markdown or JSON result.
 
 ## Requirements
 
@@ -53,6 +61,7 @@ Scrape web articles and extract high-fidelity Markdown and metadata via a local 
 - Unreachable Windmill daemon (`localhost`) ⟶ return error message indicating the local Windmill service is not running.
 - HTTP error code (401, 403, 404, 500) ⟶ return descriptive error message with HTTP status code while redacting sensitive tokens.
 - Article extraction failure (HTTP 422) ⟶ return notice that the page could not be parsed as an article.
+- Malformed or incomplete success payload ⟶ return an error identifying the missing or invalid response property.
 - Conflicting constraints ⟶ prioritize data fidelity and security over formatting preferences.
 - Forbidden or restricted target URL ⟶ refuse request and provide explanation.
 

@@ -29,13 +29,33 @@ function Exit-WithError {
     exit $Code
 }
 
-# Support positional invocation from wrappers or command line
-if ([string]::IsNullOrWhiteSpace($Url)) {
-    if ($args.Count -gt 0) {
-        $Url = $args[0]
-        if ($args.Count -gt 1 -and ($args[1] -in "markdown", "json")) {
-            $Format = $args[1]
+function Assert-ResponseSchema {
+    param(
+        [Parameter(Mandatory = $true)]
+        [object]$Payload
+    )
+
+    if ($null -eq $Payload -or $Payload -is [string] -or $Payload -is [System.Array]) {
+        throw "response must be a JSON object"
+    }
+
+    foreach ($propertyName in @("ttr", "source", "article", "frontmatter")) {
+        if ($null -eq $Payload.PSObject.Properties[$propertyName]) {
+            throw "missing required property '$propertyName'"
         }
+    }
+
+    if ($Payload.ttr -isnot [System.ValueType] -or $Payload.ttr -is [bool]) {
+        throw "'ttr' must be a number"
+    }
+    if ($Payload.source -isnot [string] -or [string]::IsNullOrWhiteSpace($Payload.source)) {
+        throw "'source' must be a non-empty string"
+    }
+    if ($Payload.article -isnot [string]) {
+        throw "'article' must be a string"
+    }
+    if ($Payload.frontmatter -is [string] -or $Payload.frontmatter -is [System.ValueType] -or $Payload.frontmatter -is [System.Array]) {
+        throw "'frontmatter' must be an object"
     }
 }
 
@@ -48,15 +68,19 @@ if ($Url -notmatch '^https?://') {
     Exit-WithError "Error: Invalid URL format '$Url'. URL must begin with http:// or https://" 1
 }
 
-# Resolve endpoint and authentication token from environment or defaults
-$endpoint = [Environment]::GetEnvironmentVariable("WINDMILL_URL")
-if ([string]::IsNullOrWhiteSpace($endpoint)) {
-    $endpoint = "http://localhost/api/w/obsidian/jobs/run_wait_result/f/u/peterernst/scrape_markdown_article"
+if ($TimeoutSec -lt 1) {
+    Exit-WithError "Error: TimeoutSec must be a positive integer." 1
 }
 
-$token = [Environment]::GetEnvironmentVariable("WINDMILL_TOKEN")
+# Resolve endpoint and authentication token from the environment
+$endpoint = $env:WINDMILL_SCRAPE_URL
+if ([string]::IsNullOrWhiteSpace($endpoint)) {
+    Exit-WithError "Error: WINDMILL_SCRAPE_URL environment variable is not set. Please set it to the Windmill scrape endpoint URL." 1
+}
+
+$token = $env:WINDMILL_SCRAPE_TOKEN
 if ([string]::IsNullOrWhiteSpace($token)) {
-    $token = "lpWu39p3xrbGCT09CpdMRgnO2c4IDLIu"
+    Exit-WithError "Error: WINDMILL_SCRAPE_TOKEN environment variable is not set. Please set it to the Windmill scrape webhook token." 1
 }
 
 $headers = @{
@@ -95,7 +119,7 @@ try {
     }
 
     if ($statusCode -eq 401 -or $statusCode -eq 403) {
-        Exit-WithError "Error (HTTP $statusCode): Authentication failed for Windmill endpoint. Verify WINDMILL_TOKEN." 1
+        Exit-WithError "Error (HTTP $statusCode): Authentication failed for Windmill endpoint. Verify WINDMILL_SCRAPE_TOKEN." 1
     } elseif ($statusCode -eq 404) {
         Exit-WithError "Error (HTTP 404): Windmill endpoint route not found at $endpoint." 1
     } elseif ($statusCode -eq 422) {
@@ -120,6 +144,12 @@ try {
 
 if ($null -eq $response) {
     Exit-WithError "Error: Empty response received from Windmill service." 1
+}
+
+try {
+    Assert-ResponseSchema -Payload $response
+} catch {
+    Exit-WithError "Error: Invalid Windmill response schema. $($_.Exception.Message)" 1
 }
 
 if ($Format -eq "json") {

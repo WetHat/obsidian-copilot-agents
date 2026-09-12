@@ -6,12 +6,12 @@ The `scrape-web-content` skill connects to a local Windmill instance to run the 
 
 ## Endpoint Specification
 
-- **Base URL**: `http://localhost` (or `$env:WINDMILL_URL`)
+- **Endpoint URL**: configured through `$env:WINDMILL_SCRAPE_URL`; no built-in default is used.
 - **Route**: `/api/w/obsidian/jobs/run_wait_result/f/u/peterernst/scrape_markdown_article`
 - **Method**: `POST`
 - **Headers**:
   - `Content-Type: application/json; charset=utf-8`
-  - `Authorization: Bearer <token>` (default token configured in script or overridden by `$env:WINDMILL_TOKEN`)
+  - `Authorization: Bearer <token>` using the secret supplied through `$env:WINDMILL_SCRAPE_TOKEN`
 
 ## Request Payload
 
@@ -54,10 +54,10 @@ A JSON object returned upon successful extraction:
 
 ## Environment Variables
 
-| Variable | Description | Default Value |
+| Variable | Description | Requirement |
 | --- | --- | --- |
-| `WINDMILL_URL` | Full URL to the Windmill `run_wait_result` endpoint | `http://localhost/api/w/obsidian/jobs/run_wait_result/f/u/peterernst/scrape_markdown_article` |
-| `WINDMILL_TOKEN` | Bearer token for authenticating against the Windmill API | `lpWu39p3xrbGCT09CpdMRgnO2c4IDLIu` |
+| `WINDMILL_SCRAPE_URL` | Full URL to the Windmill `run_wait_result` endpoint | Required; no default |
+| `WINDMILL_SCRAPE_TOKEN` | Bearer token for authenticating against the Windmill API | Required; no default |
 
 ## HTTP Status Codes & Error Diagnostics
 
