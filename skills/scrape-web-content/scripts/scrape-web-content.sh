@@ -23,8 +23,8 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # If PowerShell Core (pwsh) is available, use the canonical PowerShell script
-if command -v pwsh >/dev/null 2>&1 && [ -f "$SCRIPT_DIR/scripts/scrape-web-content.ps1" ]; then
-  exec pwsh -NoProfile -File "$SCRIPT_DIR/scripts/scrape-web-content.ps1" -Url "$URL" -Format "$FORMAT" -TimeoutSec "$TIMEOUT_SEC"
+if command -v pwsh >/dev/null 2>&1 && [ -f "$SCRIPT_DIR/scrape-web-content.ps1" ]; then
+  exec pwsh -NoProfile -File "$SCRIPT_DIR/scrape-web-content.ps1" -Url "$URL" -Format "$FORMAT" -TimeoutSec "$TIMEOUT_SEC"
 fi
 
 # Fallback: curl + direct REST execution

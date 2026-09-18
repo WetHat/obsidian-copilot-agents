@@ -38,7 +38,7 @@ metadata:
 	- On macOS/Linux: execute `scripts/scrape-web-content.sh "<url>" "<format>" <timeoutSec>`.
 	- Legacy fallback (Windows cmd): execute `scripts/scrape-web-content.cmd "<url>" "<format>" "<timeoutSec>"` only when direct PowerShell execution is unavailable.
 4. Capture standard output from the execution script, which emits the pre-formatted Markdown or JSON payload directly.
-5. If the script exits with non-zero status or outputs an error stream, map the error message to `## Contingencies`.
+5. If the script exits with non-zero status or outputs an error stream, map the error message to Contingencies.
 6. Return the captured Markdown or JSON result directly without secondary transformation.
 
 ## Requirements
