@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 50
 copilot-command-model-key: 3e166e02-ba29-4d85-9205-0ebedac5fb78
-copilot-command-last-used: 1789671624436
+copilot-command-last-used: 1790146652070
 ---
 ## Task
 Generate one high-signal, actionable Markdown report for the reader of {activeNote}, using notes displayed in its Obsidian Bases table.
@@ -20,7 +20,7 @@ Only Notes displayed in the Obsidian Bases table of {activeNote}
 Smart-brevity Markdown report:
 1. Start with a level 2 'Quick Overview' heading, followed by one bullet per category stating its main insight.
 2. Use one level 2 heading per category. Rank categories by explicit impact first, then urgency, risk, actionability, salience , using only priorities stated or directly supported by the input notes; when no criterion distinguishes categories, break ties alphabetically.
-3. Under each category heading, use a numbered list. Each item begins with a note reference (wikilink) followed by a hard line-break (2 trailing spaces), then below a  `smart-brevity-summary` of note content, properly indented
+3. Under each category heading, use a numbered list. Each item begins with a note reference (wikilink) followed by a hard line-break (2 trailing spaces), then below the output of the  `smart-brevity-summary` skill for the note content, properly indented
 
 ## Requirements
 - Output must:

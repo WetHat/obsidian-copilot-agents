@@ -12,9 +12,9 @@ metadata:
 # Smart Brevity Summary
 
 ## Output
-- Return the following Markdown callout structure without surrounding commentary:
+- Return the following completed Markdown callout template without wrappers and surrounding commentary:
   ```markdown
-  > [!highlights] {{Tease}}
+  > [!highlights]+ {{Tease}}
   > {{Lede}}
   >
   > ==Why it matters==:
@@ -24,7 +24,7 @@ metadata:
   > - {{selected existing link}}
   > - ...
   ```
-- Replace placeholders with generated content. Emit 0–3 link bullets, omit
+- Replace Mustache placeholders with generated content. Emit 0–3 link bullets, omit
   unused bullets and the entire Go Deeper section when no supported links
   exist, and never output placeholder braces.
 
