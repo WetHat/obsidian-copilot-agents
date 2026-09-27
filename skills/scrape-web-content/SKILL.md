@@ -30,14 +30,14 @@ metadata:
 1. Validate input `url` string to ensure non-empty HTTP or HTTPS address.
 2. Apply parameter defaults for omitted optional arguments (`format: markdown`, `timeoutSec: 60`).
 3. Execute the scraping script:
-	- On Windows (primary): spawn a direct PowerShell subprocess:
+	- On Windows (primary): spawn Windows PowerShell 5.1 (always present on Windows):
 	  ```powershell
 	  powershell -NoProfile -ExecutionPolicy Bypass -File "<skill-dir>/scripts/scrape-web-content.ps1" -Url "<url>" -Format "<format>" -TimeoutSec <timeoutSec>
 	  ```
 	 (or execute in-process with `& "<skill-dir>/scripts/scrape-web-content.ps1" -Url "<url>" -Format "<format>" -TimeoutSec <timeoutSec>` when already inside an active PowerShell session).
 	- On macOS/Linux: execute `scripts/scrape-web-content.sh "<url>" "<format>" <timeoutSec>`.
 	- Legacy fallback (Windows cmd): execute `scripts/scrape-web-content.cmd "<url>" "<format>" "<timeoutSec>"` only when direct PowerShell execution is unavailable.
-4. Capture standard output from the execution script, which emits the pre-formatted Markdown or JSON payload directly.
+4. Capture standard output from the execution script, which emits the pre-formatted Markdown or JSON payload directly. The script configures UTF-8 output itself and decodes the Windmill response bytes explicitly as UTF-8, so no caller-side encoding setup is required.
 5. If the script exits with non-zero status or outputs an error stream, map the error message to Contingencies.
 6. Return the captured Markdown or JSON result directly without secondary transformation.
 

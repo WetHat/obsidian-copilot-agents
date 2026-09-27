@@ -16,9 +16,14 @@ param(
 # Enforce TLS 1.2 / TLS 1.3
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-# Configure UTF-8 encoding for standard output and pipeline
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-$OutputEncoding = [System.Text.Encoding]::UTF8
+# Configure UTF-8 (no BOM) encoding for standard output and pipeline.
+# Wrapped in try/catch: setting the console encoding can fail when no
+# interactive console handle exists (fully redirected/service contexts).
+$Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+try {
+    [Console]::OutputEncoding = $Utf8NoBom
+    $OutputEncoding = $Utf8NoBom
+} catch { }
 
 function Exit-WithError {
     param(
@@ -93,7 +98,24 @@ $payload = @{
 } | ConvertTo-Json -Compress
 
 try {
-    $response = Invoke-RestMethod -Uri $endpoint -Method POST -Headers $headers -Body $payload -TimeoutSec $TimeoutSec
+    # Decode the response body explicitly as UTF-8.
+    # Invoke-RestMethod in Windows PowerShell 5.1 decodes a charset-less
+    # 'application/json' body as ISO-8859-1, corrupting all non-ASCII text
+    # (umlauts, accents, CJK, emojis). Windmill omits the charset, so the raw
+    # bytes must be read and decoded explicitly on every supported runtime.
+    $webResponse = Invoke-WebRequest -Uri $endpoint -Method POST -Headers $headers -Body $payload -TimeoutSec $TimeoutSec -UseBasicParsing
+    $rawBytes = $null
+    if ($webResponse.PSObject.Properties['RawContentStream'] -and $null -ne $webResponse.RawContentStream) {
+        # Windows PowerShell 5.1: raw body bytes are exposed here
+        $rawBytes = $webResponse.RawContentStream.ToArray()
+    } elseif ($webResponse.Content -is [byte[]]) {
+        # PowerShell 7: binary content is exposed as byte[]
+        $rawBytes = $webResponse.Content
+    } else {
+        # PowerShell 7: text content is already UTF-8 decoded; re-encode losslessly
+        $rawBytes = [System.Text.Encoding]::UTF8.GetBytes([string]$webResponse.Content)
+    }
+    $response = ([System.Text.Encoding]::UTF8.GetString($rawBytes)) | ConvertFrom-Json
 } catch {
     $statusCode = 0
     $errorBody = ""
