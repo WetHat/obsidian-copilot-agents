@@ -30,13 +30,7 @@ Using current, read-only web research and the model inventory in [[Models]], det
 	- Derive candidate levels per model: 1 candidate if the model has only 1 setting or no configurable reasoning (base/standard mode); 2 candidates if it has exactly 2 settings (e.g., off / on, min / max); 3 candidates spread evenly if it supports 3 or more discrete settings or a continuous token budget (e.g., minimum, midpoint, maximum; or low, medium, high).
 	- Evaluate the candidate levels against the weighted dimensions in Criterion 3 and select exactly one best level per model: the candidate with the highest total weighted score; on a tie, the lower (cheaper / faster) level.
 	- Report the selected level and a selection rationale stating why it outperforms the other candidates for the workloads.
-3. **Scoring dimensions & weights:** Score each model at its selected best level from 0–100 using these exact weights:
-	- Reasoning and problem solving: 25%
-	- Coding and software-engineering capability: 20%
-	- Tool use, agentic reliability, and instruction following: 20%
-	- Context handling and adherence to complex instructions: 15%
-	- Factuality, uncertainty handling, and self-correction: 10%
-	- Practical efficiency for OpenCode (latency, cost, context window): 10%
+3. **Scoring dimensions & weights:** Score each model at its selected best level from 0–100 as specified in [[Workload Distribution & Benchmark Mapping]]
 4. **Rankability gate:**
 	- A numeric score (0–100) is assigned only when model identity and the selected reasoning setting are directly verified, and at least 4 of the 6 weighted dimensions have supporting evidence from authoritative vendor docs or benchmark-maintainer sources.
 	- Rows with fewer than 4 evidenced dimensions or unverified settings are marked `NR` ("Not Rankable") with missing evidence stated.
