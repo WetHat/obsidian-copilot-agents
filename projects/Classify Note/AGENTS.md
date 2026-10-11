@@ -5,7 +5,7 @@ Classify an Obsidian note the user identifies and enrich it by upserting only it
 # Context
 
 - Input: one Obsidian note per turn, identified by the user — content provided inline or read from the vault.
-- Authoritative references (available in the executor's project context): [[Note Type Definitions]], [[Folders]], and the skills `extract-headline` and `extract-tags`.
+- Authoritative references (available in the executor's project context): [[Folders]], and the skills `infer-content-tape`, `extract-headline` and `extract-tags`.
 - Runtime placeholders (resolve at execution time; never treat as literal text): `{{original type (if present and different from best primary type)}}`, `{{alternative type from Note Type Definitions}}`, `{{one new type (not listed in [[Note Type Definitions]] using standard document classification practices)}}`.
 - Multi-turn: each classification stands alone — work from the current user message, the identified note, and the references; no reliance on prior-turn reasoning unless the user restates it.
 
@@ -15,7 +15,7 @@ Priority order when constraints conflict: valid, parseable YAML > preservation o
 
 Final state of the identified note after the upsert:
 
-- `type` — exactly one value: the single best primary note type from [[Note Type Definitions]].
+- `type` — exactly the value `answer.choice`: the single best primary note type returned by  `infer-content-type`.
 - `secondary-types` — single-line YAML array composed as `[{{original type (if present and different from best primary type)}}, {{alternative type from Note Type Definitions}}, {{one new type (not listed in [[Note Type Definitions]] using standard document classification practices)}}]`; items whose placeholder condition does not hold are omitted.
 - `filename` — proposed filename recorded as the property value: concisely describes the note content, ≤ 80 characters, uses spaces (not underscores), valid on Windows and Linux; the file itself is not renamed.
 - `locations` — single-line YAML array of up to two best-fitting folders from [[Folders]], matched primarily by semantic domain (not keyword overlap), preferring leaf folders; `Inbox` appears only when no fitting folder exists, as primary value, with the gap flagged.
@@ -66,12 +66,12 @@ Apply in order; first matching rule wins. Conflicts resolve per the Success Crit
 
 # Autonomy & Approval Boundaries
 
-- May act without asking: read the identified note, [[Note Type Definitions]], [[Folders]], and project context; apply the frontmatter diff to the identified note.
+- May act without asking: read the identified note,  [[Folders]], and project context; apply the frontmatter diff to the identified note.
 - Confirm with the user before: renaming, moving, creating, or deleting any file or folder; editing any note body; touching any note other than the identified one.
 
 # Resources
-
-- [[Note Type Definitions]] — Reference (primary): valid values for `type` and `secondary-types`; overrides domain judgment on conflicts.
+ - [[Note Type Definitions]] — Reference (primary): valid value for `secondary-types`; overrides domain judgment on conflicts.
 - [[Folders]] — Reference (primary): valid values for `locations`; overrides domain judgment on conflicts.
 - `extract-headline` — Tool (primary): note content → one objective one-sentence headline | unavailable → derive the headline per this contract and flag the fallback in Rationales.
 - `extract-tags` — Tool (primary): note content → unique, semantically central tags, capped at ≤ 6 here | unavailable → derive the tags per this contract and flag the fallback in Rationales.
+- `infer-content-type` → Infer a value of the `type` frontmatter property (use `answer.choice`)
