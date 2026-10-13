@@ -78,12 +78,8 @@ if ($TimeoutSec -lt 1) {
 }
 
 # Resolve endpoint and authentication token from the environment
-$endpoint = $env:WINDMILL_SCRAPE_URL
-if ([string]::IsNullOrWhiteSpace($endpoint)) {
-    Exit-WithError "Error: WINDMILL_SCRAPE_URL environment variable is not set. Please set it to the Windmill scrape endpoint URL." 1
-}
-
-$token = $env:WINDMILL_SCRAPE_TOKEN
+$endpoint = 'http://localhost/api/w/obsidian/jobs/run_wait_result/f/u/peterernst/scrape_markdown_article'
+$token = $env:WMILL_SCRAPE_TOKEN
 if ([string]::IsNullOrWhiteSpace($token)) {
     Exit-WithError "Error: WINDMILL_SCRAPE_TOKEN environment variable is not set. Please set it to the Windmill scrape webhook token." 1
 }
