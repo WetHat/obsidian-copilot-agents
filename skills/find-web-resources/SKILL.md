@@ -3,10 +3,10 @@ name: find-web-resources
 description: >-
   Find web resources for Markdown content and return them as descriptive
   Markdown links, up to a requested count. Use when the user asks for relevant
-  links, web resources, or references for their notes, content, or research.
-  Not for general web search or fetching page contents.
+  links, web resources, or references for their notes, content, or research. Not
+  for general web search or fetching page contents.
 metadata:
-  copilot-enabled-agents: codex,opencode
+  copilot-enabled-agents: opencode
 ---
 # Find Web Resources
 

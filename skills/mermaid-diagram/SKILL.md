@@ -6,7 +6,7 @@ description: >-
   Use when the user describes a diagram, flowchart, chart, or visualization to
   create or modify — not for non-Mermaid image formats.
 metadata:
-  copilot-enabled-agents: codex,opencode
+  copilot-enabled-agents: opencode
 ---
 
 # Mermaid Diagram
@@ -88,16 +88,16 @@ Use" column of the 'Diagram selection' table and pick the most specific type who
 | Diagram Type       | Reference                         |
 | ------------------ | --------------------------------- |
 | flowchart          | [[references/flowchart]]          |
-| sequenceDiagram    | [[references/sequenceDiagram]]    |
-| classDiagram       | [[references/classDiagram]]       |
-| stateDiagram-v2    | [[references/stateDiagram-v2]]    |
-| erDiagram          | [[references/erDiagram]]          |
+| sequenceDiagram    | [[sequence-diagram]]    |
+| classDiagram       | [[class-diagram]]       |
+| stateDiagram-v2    | [[state-diagram-v2]]    |
+| erDiagram          | [[er-diagram]]          |
 | journey            | [[references/journey]]            |
 | gantt              | [[references/gantt]]              |
 | pie                | [[references/pie]]                |
-| quadrantChart      | [[references/quadrantChart]]      |
-| requirementDiagram | [[references/requirementDiagram]] |
-| gitGraph           | [[references/gitGraph]]           |
+| quadrantChart      | [[quadrant-chart]]      |
+| requirementDiagram | [[requirement-diagram]] |
+| gitGraph           | [[git-graph]]           |
 | C4Context          | [[references/c4]]                 |
 | mindmap            | [[references/mindmap]]            |
 | timeline           | [[references/timeline]]           |
