@@ -1,20 +1,35 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "skills": {
-    "paths": ["~/OneDrive/Documents/ObsidianVaults/WetHat Lab/copilot/skills"]
-  },
-    "mcp": {
+  "skills": ["~/OneDrive/Documents/ObsidianVaults/WetHat Lab/copilot/skills"],
+  "mcp": {
+    "servers": {
     "firecrawl": {
       "type": "local",
       "command": ["npx", "-y", "firecrawl-mcp"],
-      "enabled": true,
-      "timeout": 60000
+      "disabled": false,
+      "timeout": {
+        "catalog": 60000,
+        "execution": 120000
+      }
     },
     "docker-mcp": {
       "type": "local",
       "command": ["docker", "mcp", "gateway", "run", "--profile", "obsidian"],
-      "enabled": true,
-      "timeout": 60000
+      "disabled": false,
+      "timeout": {
+        "catalog": 60000,
+        "execution": 60000
+      }
+    },
+    "windmill": {
+      "type": "remote",
+      "url": "http://localhost/api/mcp/w/obsidian/mcp",
+      "disabled": false,
+      "oauth": false,
+      "headers": {
+        "Authorization": "Bearer {env:WINDMILL_MCP_TOKEN}"
+      }
+    }
     }
   }
 }
