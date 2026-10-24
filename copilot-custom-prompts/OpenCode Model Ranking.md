@@ -24,23 +24,27 @@ Using current, read-only web research and the model inventory in [[Models]], det
 
 ## Success Criteria
 
-1. **Model coverage:** Every model identifier in [[Models]] appears verbatim in the Ranking Table with exactly one data row per model.
+1. **Model coverage:** 
+	- [ ] Every model identifier in [[Models]] appears verbatim in the Ranking Table with exactly one data row per model.
 2. **Best reasoning-level determination:**
-	- Discover available reasoning controls for each model via authoritative vendor documentation and API specifications.
-	- Derive candidate levels per model: 1 candidate if the model has only 1 setting or no configurable reasoning (base/standard mode); 2 candidates if it has exactly 2 settings (e.g., off / on, min / max); 3 candidates spread evenly if it supports 3 or more discrete settings or a continuous token budget (e.g., minimum, midpoint, maximum; or low, medium, high).
-	- Evaluate the candidate levels against the weighted dimensions in Criterion 3 and select exactly one best level per model: the candidate with the highest total weighted score; on a tie, the lower (cheaper / faster) level.
-	- Report the selected level and a selection rationale stating why it outperforms the other candidates for the workloads.
-3. **Scoring dimensions & weights:** Score each model at its selected best level from 0–100 as specified in [[Workload Distribution & Benchmark Mapping]]
+	- [ ] Discover available reasoning controls for each model via authoritative vendor documentation and API specifications.
+	- [ ] Derive candidate levels per model: 1 candidate if the model has only 1 setting or no configurable reasoning (base/standard mode); 2 candidates if it has exactly 2 settings (e.g., off / on, min / max); 3 candidates spread evenly if it supports 3 or more discrete settings or a continuous token budget (e.g., minimum, midpoint, maximum; or low, medium, high).
+	- [ ] Evaluate the candidate levels against the weighted dimensions in Criterion 3 and select exactly one best level per model: the candidate with the highest total weighted score; on a tie, the lower (cheaper / faster) level.
+	- [ ] Report the selected level and a selection rationale stating why it outperforms the other candidates for the workloads.
+3. **Scoring dimensions & weights:**
+	- [ ] Score each model at its selected best level from 0–100 as specified in [[Workload Distribution & Benchmark Mapping]]
 4. **Rankability gate:**
-	- A numeric score (0–100) is assigned only when model identity and the selected reasoning setting are directly verified, and at least 4 of the 6 weighted dimensions have supporting evidence from authoritative vendor docs or benchmark-maintainer sources.
-	- Rows with fewer than 4 evidenced dimensions or unverified settings are marked `NR` ("Not Rankable") with missing evidence stated.
-	- Scored rows appear first, sorted descending by score; `NR` rows follow without invented ordering. Ties are labeled `Tied`.
+	- [ ] A numeric score (0–100) is assigned only when model identity and the selected reasoning setting are directly verified, and at least 4 of the 6 weighted dimensions have supporting evidence from authoritative vendor docs or benchmark-maintainer sources.
+	- [ ] Rows with fewer than 4 evidenced dimensions or unverified settings are marked `NR` ("Not Rankable") with missing evidence stated.
+	- [ ] Scored rows appear first, sorted descending by score; `NR` rows follow without invented ordering. Ties are labeled `Tied`.
 5. **Factuality & citations:**
-	- Cross-check every factual claim against at least one authoritative source; if none exists, state that limitation explicitly.
-	- Require direct Markdown links for factual claims; never fabricate citations, benchmark scores, or capabilities.
-	- Unsupported dimensions are labeled `Unknown`.
-6. **Persistence verification:** The complete report is saved to `Inbox/` strictly following the naming format and collision rules specified in Autonomy & Approval Boundaries, and the Save Status section reports the outcome.
-7. **Priority order when criteria conflict:** Factual accuracy and non-fabrication → verbatim [[Models]] coverage → transparent uncertainty → best-level determination with documented per-model rationale → ranking usefulness → brevity.
+	- [ ] Cross-check every factual claim against at least one authoritative source; if none exists, state that limitation explicitly.
+	- [ ] Require direct Markdown links for factual claims; never fabricate citations, benchmark scores, or capabilities.
+	- [ ] Unsupported dimensions are labeled `Unknown`.
+6. **Persistence verification:**
+	- [ ] The complete report is saved to `Inbox/` strictly following the naming format and collision rules specified in Autonomy & Approval Boundaries, and the Save Status section reports the outcome.
+7. **Priority order when criteria conflict:**
+	- [ ] Factual accuracy and non-fabrication → verbatim [[Models]] coverage → transparent uncertainty → best-level determination with documented per-model rationale → ranking usefulness → brevity.
 
 ## Deliverables
 

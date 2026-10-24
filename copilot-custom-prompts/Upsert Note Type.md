@@ -3,6 +3,6 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 420
 copilot-command-model-key: ""
-copilot-command-last-used: 1791895038256
+copilot-command-last-used: 1791991256466
 ---
-Invoke skill `infer-content-type` with the content of {active-Note} and upsert the frontmatter property `type` of {activeNote} with the value of the `type` property of the JSON object retuned by the skill 
+Invoke  `infer_content_type` with the content of {activeNote} and upsert the note's frontmatter property `type`with the value of the `answer.choice` property of the JSON object returned by the skill. Report the entire JSON object wrapped in a fenced JSON code block to the chat window. 
