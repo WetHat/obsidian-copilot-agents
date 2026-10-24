@@ -2,9 +2,6 @@
 copilot-project-id: 3f3f9229-b9cb-4219-b0c5-fc6ed2110b6c
 copilot-project-name: Writing Assistant v1
 copilot-project-description: Sketch to production ready article
-copilot-project-model-key: google/gemini-3.5-flash|openrouterai
-copilot-project-temperature: 0
-copilot-project-max-tokens: 32061
 copilot-project-inclusions: "%5B%5BObsidian%20flavored%20Markdown%5D%5D"
 copilot-project-exclusions: ""
 copilot-project-web-urls: []

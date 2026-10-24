@@ -2,9 +2,6 @@
 copilot-project-id: b31b9202-2619-4155-be6b-1e6766912bbe
 copilot-project-name: Summarize (pdf) v1
 copilot-project-description: Summarize a PDF for RAG
-copilot-project-model-key: google/gemini-3.5-flash|openrouterai
-copilot-project-temperature: 0
-copilot-project-max-tokens: 32669
 copilot-project-inclusions: "%5B%5BObsidian%20flavored%20Markdown%5D%5D"
 copilot-project-exclusions: ""
 copilot-project-web-urls: []
