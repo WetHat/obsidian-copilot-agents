@@ -9,7 +9,7 @@
       "disabled": false,
       "timeout": {
         "catalog": 60000,
-        "execution": 120000
+        "startup": 120000
       }
     },
     "docker-mcp": {
