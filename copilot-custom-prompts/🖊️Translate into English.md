@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: false
 copilot-command-context-menu-order: 280
 copilot-command-model-key: z-ai/glm-5.2|openrouterai
-copilot-command-last-used: 1784234315935
+copilot-command-last-used: 1791351750725
 ---
 <instruction>Translate the text below into English
     1. Preserve the meaning and tone

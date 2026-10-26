@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 440
 copilot-command-model-key: ""
-copilot-command-last-used: 1792526897582
+copilot-command-last-used: 1792911771755
 ---
 Read applicable instructions, then generate `tool-inventory-source-mapping` as a JSON object and always save it to `Vault Backoffice/Context Data/Tool and Skill Inventory.json`.
 

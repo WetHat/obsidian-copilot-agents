@@ -3,9 +3,8 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 430
 copilot-command-model-key: ""
-copilot-command-last-used: 1792481204094
+copilot-command-last-used: 1792999484274
 ---
-
 ## Task
 
 Annotate {activeNote} with a Smart Brevity summary of the GitHub repository README referenced by its `repo` frontmatter property. Insert before the first Markdown heading, preserving all existing content.
