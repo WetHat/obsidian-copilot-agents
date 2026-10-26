@@ -20,7 +20,7 @@ One definition block. `detailMode` sets depth; `outputFormat` sets container and
 - `detailMode`: `standard` — definition, purpose, and typical usage in short paragraphs or a list; `comprehensive` — adds logic, considerations, examples, and related terms.
 - Match the configured material's register, style, and tone — sentence length, vocabulary, person, formatting habits — and never exceed what it evidences; with none, follow the request's register.
 - Headings, blockquotes, and code fences only when they carry content — a grouped breakdown, a quoted span, a short example — never as decoration.
-- Citations: required — 2–3 sources you inspected, at least one of them external, separated by ` 🔹 `. Write `[[Note Title]]` or `[[Note Title#Heading]]` for vault material, `[Source Title](URL)` for a web page. Inspected means you opened the source and read the passage you rely on; a search-result snippet, preview card, or link listing does not count. Cite each source once, only for a claim it supports. Never invent a source, title, URL, or quotation, and never pad the list with a source that does not carry the definition.
+- Citations: required — 2–3 sources you inspected, at least one of them external, separated by ` 🔹 `. Write `[[Note Title]]` or `[[Note Title#Heading]]` for vault material, `[Source Title](URL)` for a web page. Inspected means you opened the source and read the passage you rely on; a search-result snippet, preview card, or link listing does not count. A citable source must state what the term/acronym is or does; Cite each source once, only for a claim it supports. Never invent a source, title, URL, or quotation, and never pad the list with a source that does not carry the definition.
 
 ### `plain` (default)
 
@@ -74,7 +74,7 @@ Evidence may come from the vault or web to support the definition, never to rein
 2. Apply parameter defaults: `detailMode=standard`, `outputFormat=plain`.
 3. Load only configured items that are not already inlined; read each once.
 4. Fix the sense from the configured material; with none, use the most common meaning and label the assumption.
-5. Gather evidence until 2–3 sources are inspected, at least one external: an existing vault definition, a configured source, authoritative external documentation. Open every source you intend to cite — a discovery snippet is not inspection — and stop at three. Never invent a fact, source, URL, or quotation.
+5. Gather evidence until 2–3 sources are inspected, at least one external: an existing vault definition of the term, authoritative external documentation. The configured material fixes the sense and is not itself a citable source
 6. Draft at the selected depth in the material's register, keeping necessary caveats before trimming repetition.
 7. Verify: the sense matches the material or carries the assumption label; the list holds 2–3 inspected sources with at least one external; each citation supports its claim and appears once; the container matches `outputFormat`; the anchor is unique in its own namespace — footnote labels or block IDs — or suffixed.
 8. Return the definition with no preamble or commentary.

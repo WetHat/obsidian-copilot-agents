@@ -24,7 +24,7 @@ The marker `[^root]` is inserted immediately after the occurrence; the definitio
 
 ```markdown
 [^root]: ==root== — the top-level folder of the vault: the directory that contains all other notes and folders and against which every other path is resolved.  
-    🔹 [[Skillification Tasks]] 🔹 [Root directory — Wikipedia](https://en.wikipedia.org/wiki/Root_directory)
+    [Root directory — Wikipedia](https://en.wikipedia.org/wiki/Root_directory)
 ```
 
 ## Footnote — Machine Learning, `comprehensive`
@@ -41,7 +41,7 @@ The marker `[^machinelearning]` is inserted immediately after the occurrence; th
     - Inference applies the fitted model to new inputs.
     - Generalization measures performance on data the model has not seen.
     Related terms: deep learning, supervised learning, overfitting.  
-    🔹 [[ML Notes]] 🔹 [Machine Learning Glossary — Google for Developers](https://developers.google.com/machine-learning/glossary) 🔹 [Machine Learning — Wikipedia](https://en.wikipedia.org/wiki/Machine_learning)
+    🔹 [[ML Intro]] 🔹 [Machine Learning Glossary — Google for Developers](https://developers.google.com/machine-learning/glossary) 🔹 [Machine Learning — Wikipedia](https://en.wikipedia.org/wiki/Machine_learning)
 ```
 
 ## Callout — Machine Learning, `comprehensive`
@@ -59,5 +59,5 @@ The marker `[^machinelearning]` is inserted immediately after the occurrence; th
 >
 > Related terms: deep learning, supervised learning, overfitting.
 >
-> 🔹 [[ML Notes]] 🔹 [Machine Learning Glossary — Google for Developers](https://developers.google.com/machine-learning/glossary) 🔹 [Machine Learning — Wikipedia](https://en.wikipedia.org/wiki/Machine_learning)
+> 🔹 [[ML Intro]] 🔹 [Machine Learning Glossary — Google for Developers](https://developers.google.com/machine-learning/glossary) 🔹 [Machine Learning — Wikipedia](https://en.wikipedia.org/wiki/Machine_learning)
 ```
