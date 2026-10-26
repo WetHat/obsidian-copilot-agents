@@ -2,8 +2,8 @@
 copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 0
-copilot-command-model-key: 3e166e02-ba29-4d85-9205-0ebedac5fb78
-copilot-command-last-used: 1790085430079
+copilot-command-model-key: 45e12fba-c109-4b1c-8305-e4aa8feb59a8
+copilot-command-last-used: 1792479354353
 ---
 ## Task
 
@@ -20,10 +20,10 @@ Analyze the README-type note identified by `{activeNote}` and its parent folder,
 
 ## Success Criteria
 
-- The callout contains a summary of the inferred purpose and subject-matter domain (< 300 words), 3–5 evidence-based recommendations for note types or content, and one content-based decision rule answering: “What do I need to consider when deciding whether a note belongs here?”
-- Every recommendation is actionable and specific to the content evidenced in the inspected notes; recommendations do not concern frontmatter, YAML, templates, naming, filing, or other organizational changes, except for domain-related tags. The required `headline`/`tags` upsert is an implementation action, not a recommendation.
-- Existing note content and frontmatter remain unchanged except for the generated callout and requested `headline`/`tags` upserts. The evidence and preservation rules in this section are authoritative and are not repeated or reinterpreted elsewhere. Later turns reread the current note and relevant evidence.
-- Factual claims are cross-checked against at least two independent authoritative vault sources whenever two are available and cite those sources with Obsidian wikilinks. Never fabricate citations. Evidence-supported inferences may be labeled `Inferred`; unsupported facts remain `Unknown`.
+- [ ] The callout contains a summary of the inferred purpose and subject-matter domain (< 300 words), 3–5 evidence-based recommendations for note types or content, and one content-based decision rule answering: “What do I need to consider when deciding whether a note belongs here?”
+- [ ] Every recommendation is actionable and specific to the content evidenced in the inspected notes; recommendations do not concern frontmatter, YAML, templates, naming, filing, or other organizational changes, except for domain-related tags. The required `headline`/`tags` upsert is an implementation action, not a recommendation.
+- [ ] Existing note content and frontmatter remain unchanged except for the generated callout and requested `headline`/`tags` upserts. The evidence and preservation rules in this section are authoritative and are not repeated or reinterpreted elsewhere. Later turns reread the current note and relevant evidence.
+- [ ] Factual claims are cross-checked against at least two independent authoritative vault sources whenever two are available and cite those sources with Obsidian wikilinks. Never fabricate citations. Evidence-supported inferences may be labeled `Inferred`; unsupported facts remain `Unknown`.
 
 ## Deliverables
 

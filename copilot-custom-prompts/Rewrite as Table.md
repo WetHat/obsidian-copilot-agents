@@ -2,7 +2,7 @@
 copilot-command-context-menu-enabled: true
 copilot-command-slash-enabled: false
 copilot-command-context-menu-order: 40
-copilot-command-model-key: c2ab6ebf-f948-4be8-b412-a235b82ba651
+copilot-command-model-key: 19ed0a25-4bc5-4195-880f-f671e8af3364
 copilot-command-last-used: 1786642321580
 ---
 ## Task
