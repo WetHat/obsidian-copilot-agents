@@ -24,7 +24,7 @@ The marker `[^root]` is inserted immediately after the occurrence; the definitio
 
 ```markdown
 [^root]: ==root== — the top-level folder of the vault: the directory that contains all other notes and folders and against which every other path is resolved.  
-    [Root directory — Wikipedia](https://en.wikipedia.org/wiki/Root_directory)
+    🔹 [Root directory — Wikipedia](https://en.wikipedia.org/wiki/Root_directory) 🔹 [path_resolution(7) — Linux manual page](https://man7.org/linux/man-pages/man7/path_resolution.7.html)
 ```
 
 ## Footnote — Machine Learning, `comprehensive`
@@ -50,7 +50,7 @@ The marker `[^machinelearning]` is inserted immediately after the occurrence; th
 - Output:
 
 ```markdown
-> [!def]+ Machine Learning ^machinelearning
+> [!def]+ Machine Learning (ML) ^machinelearning
 > Machine Learning is a field of computer science focused on creating algorithms that enable systems to learn patterns from data and make predictions or decisions without being explicitly programmed.
 >
 > It works by training models on examples so they generalize to new, unseen inputs. Typical uses include classification, regression, recommendation, anomaly detection, and pattern recognition across vision, language, and analytics.

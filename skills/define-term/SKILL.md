@@ -20,7 +20,12 @@ One definition block. `detailMode` sets depth; `outputFormat` sets container and
 - `detailMode`: `standard` — definition, purpose, and typical usage in short paragraphs or a list; `comprehensive` — adds logic, considerations, examples, and related terms.
 - Match the configured material's register, style, and tone — sentence length, vocabulary, person, formatting habits — and never exceed what it evidences; with none, follow the request's register.
 - Headings, blockquotes, and code fences only when they carry content — a grouped breakdown, a quoted span, a short example — never as decoration.
-- Citations: required — 2–3 sources you inspected, at least one of them external, separated by ` 🔹 `. Write `[[Note Title]]` or `[[Note Title#Heading]]` for vault material, `[Source Title](URL)` for a web page. Inspected means you opened the source and read the passage you rely on; a search-result snippet, preview card, or link listing does not count. A citable source must state what the term/acronym is or does; Cite each source once, only for a claim it supports. Never invent a source, title, URL, or quotation, and never pad the list with a source that does not carry the definition.
+- Citations: required. The list holds 2–3 sources you inspected, at least one of them external, separated by ` 🔹 `.
+  - Write `[[Note Title]]` or `[[Note Title#Heading]]` for vault material, `[Source Title](URL)` for a web page.
+  - Inspected means you opened the source and read the passage you rely on; a search-result snippet, preview card, or link listing does not count.
+  - A citable source must state what the term/acronym is or does.
+  - Cite each source once, only for a claim it supports.
+  - Never invent a source, title, URL, or quotation, and never pad the list with a source that does not carry the definition.
 
 ### `plain` (default)
 
@@ -32,12 +37,12 @@ One definition block. `detailMode` sets depth; `outputFormat` sets container and
 - Indent every continuation line four spaces; lists, blockquotes, and code fences stay inside.
 - No headings or empty lines: a blank line ends the definition.
 - Close with the citation list on its own indented line, adding two trailing spaces to the preceding prose line.
-- `<anchor>`: short, lowercase alphanumeric, derived from the term, unique among the note's existing footnote labels (compare case-insensitively); on collision append the smallest unused suffix. If the marker cannot sit at the term, use `plain`.
+- `<anchor>`: short, lowercase alphanumeric, derived from the term, unique among the target note's existing footnote labels (compare case-insensitively), listed from the configured read of that note; on collision append the smallest unused suffix. If the target note is unavailable, or the marker cannot sit at the term, use `plain`.
 
 ### `callout`
 
 - Title line: `> [!def]+ <Term (Acronym)> ^<anchor>`, then one `> ` line per body line.
-- `<anchor>`: short, lowercase alphanumeric, derived from the term, unique among the note's block IDs; on collision append the smallest unused suffix.
+- `<anchor>`: short, lowercase alphanumeric, derived from the term, unique among the target note's block IDs, listed from the configured read of that note; on collision append the smallest unused suffix. If the target note is unavailable, use `plain`.
 - No highlighted label: the title names the term.
 - Separate paragraphs with a bare `>` line; prefix headings, blockquotes, and code fences with `> `.
 - Close with the citation list as the last body line.
@@ -59,7 +64,7 @@ Configured material decides the sense; nothing else may choose which meaning app
 
 Evidence may come from the vault or web to support the definition, never to reinterpret the caller's context; at least one cited source is external. If the material does not fix the sense, use the most common meaning and label the assumption; do not search to reconstruct the missing context.
 
-**Authority:** official documentation, standards, primary research, specialist references. Vault sources need established provenance; Wikipedia is secondary and never the sole external citation. Primary evidence overrides secondary summaries; unresolved contradictions block the claim.
+**Authority:** official documentation, standards, primary research, specialist references. Vault sources need established provenance. Cite a note only when it names its own source or is the vault's originating record for the term — a glossary, specification, or decision note; a note that merely uses the term is not citable. Wikipedia is secondary and never the sole external citation. Primary evidence overrides secondary summaries; unresolved contradictions block the claim.
 
 ## Requirements
 
@@ -76,7 +81,7 @@ Evidence may come from the vault or web to support the definition, never to rein
 4. Fix the sense from the configured material; with none, use the most common meaning and label the assumption.
 5. Gather evidence until 2–3 sources are inspected, at least one external: an existing vault definition of the term, authoritative external documentation. The configured material fixes the sense and is not itself a citable source
 6. Draft at the selected depth in the material's register, keeping necessary caveats before trimming repetition.
-7. Verify: the sense matches the material or carries the assumption label; the list holds 2–3 inspected sources with at least one external; each citation supports its claim and appears once; the container matches `outputFormat`; the anchor is unique in its own namespace — footnote labels or block IDs — or suffixed.
+7. Verify: the sense matches the material or carries the assumption label; the list holds 2–3 inspected sources with at least one external; each citation supports its claim and appears once; the container matches `outputFormat`, or is `plain` where a format fallback applied; when an anchor is emitted, it is unique in its own namespace — the target note's footnote labels or block IDs — or suffixed.
 8. Return the definition with no preamble or commentary.
 
 ## Contingencies
