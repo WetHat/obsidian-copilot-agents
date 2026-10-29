@@ -2,7 +2,7 @@
 copilot-project-id: 969b6b59-5462-477f-902c-dfac55e1a8ef
 copilot-project-name: Skill Perfecter
 copilot-project-description: Make a SKILL production-ready
-copilot-project-inclusions: "%5B%5BSkill%20Operational%20Quality%20Checklist%5D%5D"
+copilot-project-inclusions: "%5B%5BSkill%20Operational%20Quality%20Checklist%20(SOQC)%5D%5D"
 copilot-project-exclusions: ""
 copilot-project-web-urls: []
 copilot-project-youtube-urls: []
