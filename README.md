@@ -55,6 +55,8 @@ The `copilot-*` skills use Copilot services. `copilot-web-fetch`, `copilot-fetch
 | `obsidian-markdown` | Create and edit Obsidian-specific Markdown, including wikilinks, embeds, callouts, properties, tags, and comments. |
 | `obsidian-bases` | Create and edit Obsidian Bases (`.base` files) with valid YAML schemas, filters, formulas, and views. |
 | `json-canvas` | Create and edit JSON Canvas (`.canvas`) files with valid nodes, edges, groups, and referential integrity. |
+| `canvas-content` | Resolve a canvas into semantic content for classification, tagging, or summarization. |
+| `canvas-frontmatter` | Read, set, merge, and remove canvas and Markdown properties through the Obsidian CLI. |
 | `mermaid-diagram` | Choose the optimal Mermaid diagram type for a specification and generate or edit valid Mermaid code. |
 
 ## Publishing and Integrations
