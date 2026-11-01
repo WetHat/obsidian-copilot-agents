@@ -18,7 +18,7 @@ copilot-command-last-used: 1793538628222
 
 - Invoke `infer_content_type` with the resolved content and use the `content_type.choice` property of the returned JSON object.
 - For **Canvas** — Use the `canvas-frontmatter` skill to set `type` as a text property on the active file.
-- For **Markdown** — use the `property:set`  from  `obsidian-cli` skill 
+- For **Markdown** — use the `property:set`  from the  `obsidian-cli` skill 
 
 ## Report
 - Output the `content_type.choice` and `content_type.confidence`

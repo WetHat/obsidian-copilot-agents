@@ -16,7 +16,7 @@ copilot-command-last-used: 1793538862122
 ## Task
 
 1. Call the `extract-headline` skill on the resolved content.
-2. Write the result with  `obsidian-cli`.
+2. Write the result with `obsidian-cli`.
 3. Report the path and the written value. Canvas properties may not appear in the Properties pane until the canvas is reopened.
 ## Constraints
 
