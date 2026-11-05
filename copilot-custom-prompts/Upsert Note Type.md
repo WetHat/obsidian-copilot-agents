@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 420
 copilot-command-model-key: ""
-copilot-command-last-used: 1793552430275
+copilot-command-last-used: 1793623177730
 ---
 ## Target
 
