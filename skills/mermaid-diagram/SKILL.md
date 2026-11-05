@@ -55,6 +55,13 @@ Use" column of the 'Diagram selection' table and pick the most specific type who
 | XY/bar/line chart, numeric series | `xychart` |
 | block diagram, grid of blocks | `block` |
 | kanban, task board | `kanban` |
+| packet diagram, network packet, protocol header, bit fields, register map | `packet` |
+| event modeling, event model, event-sourced flow, CQRS timeline, event storming | `eventmodeling` |
+| treemap, nested rectangles, hierarchical proportions, budget/disk breakdown | `treemap-beta` |
+| Ishikawa, fishbone, cause-and-effect, root-cause analysis | `ishikawa-beta` |
+| railroad/syntax/grammar diagram, BNF, ABNF | `railroad-abnf-beta` |
+| EBNF grammar diagram | `railroad-ebnf-beta` |
+| PEG grammar diagram | `railroad-peg-beta` |
 
 ### Diagram selection
 
@@ -77,6 +84,11 @@ Use" column of the 'Diagram selection' table and pick the most specific type who
 | xychart | Use for numeric data series — bar or line charts over a categorical/numeric x-axis and numeric y-axis (trends, comparisons). |
 | block | Use when you need explicit control over layout — a grid of blocks and connectors (columns/rows, block arrows) for high-level system/architecture/process overviews where auto-layout is undesirable. |
 | kanban | Use for a task board — columns as workflow stages (Todo/In Progress/Done) holding tasks, with optional assigned/ticket/priority metadata. |
+| packet | Use to show the bit-level layout of a binary structure — named fields over contiguous bit ranges (network/protocol headers, hardware registers, frame formats). Not for process flow or box-and-arrow architecture. |
+| eventmodeling | Use for event-sourced / CQRS information flow over time — UI, processor, command, read-model and event time frames in swimlanes, with state-change, state-view and translation patterns. |
+| treemap-beta | Use for hierarchical part-to-whole data — nested categories whose leaf values set rectangle area (budgets, disk usage, market share by segment). Prefer over `pie` when the data is nested or has many categories. |
+| ishikawa-beta | Use for cause-and-effect analysis of one problem — the problem at the head with cause categories and sub-causes branching off (fishbone / root-cause analysis). |
+| railroad-abnf-beta | Use for grammar/syntax documentation — grammar rules rendered as railroad diagrams from ABNF, EBNF, PEG, or IR notation. |
 
 ## Generating the diagram
 
@@ -104,10 +116,18 @@ Use" column of the 'Diagram selection' table and pick the most specific type who
 | xychart            | [[references/xychart]]            |
 | block              | [[references/block]]              |
 | kanban             | [[references/kanban]]             |
+| packet             | [[references/packet]]             |
+| eventmodeling      | [[references/event-modeling]]     |
+| treemap-beta       | [[references/treemap]]            |
+| ishikawa-beta      | [[references/ishikawa]]           |
+| railroad-abnf-beta | [[references/railroad]]           |
+| railroad-ebnf-beta | [[references/railroad]]           |
+| railroad-peg-beta  | [[references/railroad]]           |
 
 3. Produce valid Mermaid per that reference. Start the code block with the
    chosen type's keyword (e.g. `flowchart`, `stateDiagram-v2`, `gitGraph`,
-   `C4Context`).
+   `treemap-beta`), optionally preceded by a frontmatter block (see
+   [[references/syntax]]).
 4. Wrap the result in a fenced code block:
 
 ````markdown
@@ -121,6 +141,9 @@ stateDiagram-v2
 - Pick exactly one diagram type; do not combine multiple types in one block.
 - Use only syntax documented in the chosen type's reference file; do not invent
   directives or flags.
+- Use the exact keyword shown in the chosen type's reference, including any
+  `-beta` suffix (`treemap-beta`, `ishikawa-beta`, `railroad-abnf-beta`); the
+  `railroad-*-beta` keywords do not parse without it.
 - Keep node/entity/task labels faithful to the input's terminology.
 - Prefer the simplest valid diagram; do not over-specify layout unless asked.
 - Render math using LaTeX ($$…$$)
@@ -131,6 +154,14 @@ stateDiagram-v2
 - Labels with positive numeric proportions → `pie`; numeric series over an axis
   → `xychart`; a dated sequence without durations/dependencies → `timeline`; a
   dated sequence with durations/dependencies → `gantt`.
+- Nested part-to-whole data → `treemap-beta`; flat shares → `pie`.
+- Causes grouped under categories for one problem → `ishikawa-beta`; a neutral
+  topic hierarchy → `mindmap`; a causal chain with decisions → `flowchart`.
+- Bit ranges / field layout → `packet`; boxes and connectors → `block`.
+- Grammar rules (BNF/ABNF/EBNF/PEG) → `railroad-abnf-beta` (or the matching
+  `railroad-*-beta` keyword); process steps → `flowchart`.
+- Event-sourced timeline with UI/command/event/read-model entities →
+  `eventmodeling`; ordered messages between actors → `sequenceDiagram`.
 - No discernible structure → default to `flowchart` and note the assumption.
 
 ## Example

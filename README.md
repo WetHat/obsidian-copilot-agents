@@ -52,7 +52,7 @@ Skills live in `skills/`. Directory-based skills contain a `SKILL.md` and, where
 | --- | --- |
 | `canvas-content` | Resolve a `.canvas` file into a semantic Markdown report for classification, tagging, headline generation, or summarization. |
 | `canvas-frontmatter` | Read, set, merge, and remove properties in `.canvas` frontmatter (`metadata.frontmatter`). |
-| `mermaid-diagram` | Choose the optimal Mermaid diagram type for a specification and generate or edit valid Mermaid code. Ships 17 per-diagram-type reference files — flowchart, sequence, class, state, ER, Gantt, mindmap, C4, and others — plus a syntax reference. |
+| `mermaid-diagram` | Choose the optimal Mermaid diagram type for a specification and generate or edit valid Mermaid code. Ships 22 per-diagram-type reference files — flowchart, sequence, class, state, ER, Gantt, packet, event modeling, treemap, Ishikawa, railroad, and others — plus a syntax reference. |
 
 ## Note Content and Metadata
 
