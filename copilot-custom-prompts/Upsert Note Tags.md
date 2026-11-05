@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 0
 copilot-command-model-key: ae4a2a4f-a327-412f-b864-f8898ba4e774
-copilot-command-last-used: 1793538808879
+copilot-command-last-used: 1793863370323
 ---
 ## Target
 
@@ -17,7 +17,7 @@ copilot-command-last-used: 1793538808879
 ## Task
 
 1. Call the `extract-tags` skill on the resolved content.
-2. Read the existing tags from the raw file using the `property:get` from `obsidian-cli` — and merge them with the extracted tags.
+2. Read the existing tags from the raw file using the `property:read` from `obsidian-cli` — and merge them with the extracted tags.
 3. Deduplicate, sort case-insensitively, and normalize to PascalCase.
 4. Use the `canvas-frontmatter` skill for canvas files to upsert `tags` as a list property on the active file.
 5. Report the path and the final list. If the file is a canvas, note that its properties may not appear in the Properties pane until the canvas is reopened.
