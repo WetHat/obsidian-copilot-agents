@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 50
 copilot-command-model-key: 3e166e02-ba29-4d85-9205-0ebedac5fb78
-copilot-command-last-used: 1793863483732
+copilot-command-last-used: 1793955138358
 ---
 ## Task
 
@@ -53,7 +53,9 @@ Two separate output channels; routing is fixed:
 
 ### File channel
 - Content update — append the report to {activeNote}; its structure and assembly order are defined solely in Success Criteria.
-- Frontmatter update — invoke the `extract-headline` skill on the 'Quick Overview' section content and upsert the result to the `headline` frontmatter property of {activeNote}.
+- Frontmatter upsert of {activeNote}:
+	- Invoke the `extract-headline` skill on the 'Quick Overview' section content and upsert the result to `headline`.
+	- Invoke the `model-name` skill and upsert the model name to `model`.
 
 ### Chat channel
 - Success: one line — `Report appended to {activeNote}: <n> categories, <m> of <t> files summarized.` Then, only when applicable, one line each:
@@ -112,6 +114,7 @@ Skills:
 - `canvas-frontmatter`: a `.canvas` file → its `metadata.frontmatter` properties, tags included.
 - `smart-brevity-summary`: one file's Markdown → the skill's Smart-brevity callout.
 - `extract-headline`: content → a concise headline.
+- `model-name:` Name of the executing model.
 - `obsidian-cli`: Invocation and safety rules per the skill itself.
 
 Tool (obsidian-cli, verified on this vault, CLI 1.14.5); any call error routes to Failure & Clarification Rules:
