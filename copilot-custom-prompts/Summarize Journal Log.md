@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 50
 copilot-command-model-key: 3e166e02-ba29-4d85-9205-0ebedac5fb78
-copilot-command-last-used: 1793955138358
+copilot-command-last-used: 1794034027628
 ---
 ## Task
 
@@ -14,7 +14,7 @@ Generate one high-signal Smart-brevity Markdown report for the reader of {active
 - Audience and purpose: the reader of {activeNote} reviewing their journal log; quick absorption of the key insights across the displayed files and of what changed most recently.
 - Fact (authoritative inputs): only the notes or canvas files displayed in the Bases table of {activeNote}:
 	- Markdown: body text, frontmatter, tags, paths, wikilinks.
-	- Canvas (JSON): Markdown from `canvas-content`, frontmatter and tags from `canvas-frontmatter`, wikilinks.
+	- Canvas (JSON): the `canvas-content` Markdown rendering, including its frontmatter and tags, and wikilinks.
 	- Every displayed file: the file-history versions obsidian-cli returns, the `diff` for a Markdown file, the `canvas-content` rendering of a history version for a canvas.
 - Unknown / out of scope: every other vault file, all external sources, and prior chat history.
 - {activeNote} is the note invoking this command; its Bases table and displayed file set resolve from that note.
@@ -28,17 +28,16 @@ Generate one high-signal Smart-brevity Markdown report for the reader of {active
 
 Priority order when criteria conflict: Signal density > Clarity > Completeness > Brevity.
 
-- [ ] The report is appended to {activeNote} exactly once, on its own line.
-- [ ] The report opens with `## Quick Overview` and exactly one bullet per category: a `[[#<category heading>]]` wikilink plus that category's main insight in one sentence.
-- [ ] Exactly one `## <category>` heading per category, ordered by explicit impact first, then urgency, risk, actionability, salience; each rank decision rests on a priority term stated in one of the category's input files; ties order alphabetically.
-- [ ] Each heading is followed by one numbered list; each item starts with the file's wikilink (a canvas keeps `.canvas`) and a hard line-break (two trailing spaces), then the summary on the next line, every summary line indented three spaces; the summary is a smart-brevity callout or a change list per the next two criteria.
-- [ ] A multi-day file's summary is a change list, never a smart-brevity callout: the `**Changes:**` marker line, then at most 5 bullets covering changes made on D only, each a single sentence starting with a past-tense verb and grounded in that file's changed lines; merge related changes rather than dropping them; omit cosmetic edits (whitespace, punctuation, casing, link format).
-- [ ] Every other qualifying file gets the smart-brevity callout of its current content, with no `**Changes:**` marker.
+- [ ] The report is appended to {activeNote} on its own line.
+- [ ] The report conforms to the Report template in Deliverables.
+- [ ] Category sections are ordered by explicit impact first, then urgency, risk, actionability, salience; each rank decision rests on a priority term stated in one of the category's input files; ties order alphabetically.
+- [ ] A multi-day file's summary is the Report template's change-list form, never a smart-brevity callout: each bullet covers D-only changes in one sentence starting with a past-tense verb, grounded in that file's changed lines; merge related changes rather than drop them; omit cosmetic edits (whitespace, punctuation, casing, links).
+- [ ] Every other qualifying file gets the smart-brevity callout of its current content.
 - [ ] Change claims rest only on that file's change source — the unified diff for Markdown, the rendering diff for canvas; all other claims rest on input content, frontmatter, or paths.
 - [ ] At most 6 categories; when more qualify, merge the lowest-ranked into the closest higher-ranked one rather than dropping a reportable file.
 - [ ] Category headings are Title Case noun phrases of 1–4 words.
 - [ ] Each file is referenced at most once in its single best-fit category.
-- [ ] The report contains only high-signal information — key facts, insights, notable commands/configs, warnings, best practices, architectural insights, risks, constraints, actionable takeaways — no fillers, repetition, trivial steps, or generic background.
+- [ ] The report contains only high-signal information — key facts, insights, notable commands/configs, warnings, risks, constraints, actionable takeaways — no filler, repetition, or generic background.
 - [ ] The report introduces no fact from any origin other than the inputs defined in Context.
 - [ ] Chat carries the Deliverables status line and applicable flags only; no part of the report, change summaries included, appears there.
 
@@ -46,16 +45,52 @@ Priority order when criteria conflict: Signal density > Clarity > Completeness >
 
 Two separate output channels; routing is fixed:
 
-| Channel | May contain                                                                                    | Must never contain                                          |
-| ------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| File    | the report appended to {activeNote}; upserted `headline` frontmatter property                  | status lines, flags, warnings, errors, commentary, any frontmatter property other than `headline` |
-| Chat    | status line; omission/inference/assumption flags; warnings and errors; clarification questions | any part of the report, including change summaries          |
+| Channel | May contain                                                                                    | Must never contain                                                                                            |
+| ------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| File    | the report appended to {activeNote}; upserted `headline` and `model` frontmatter properties    | status lines, flags, warnings, errors, commentary, any frontmatter change other than the `headline` and `model` upserts |
+| Chat    | status line; omission/inference/assumption flags; warnings and errors; clarification questions | any part of the report, including change summaries                                                            |
 
 ### File channel
-- Content update — append the report to {activeNote}; its structure and assembly order are defined solely in Success Criteria.
+- Content update — append the report to {activeNote}; structure per the Report template below, content rules per Success Criteria.
 - Frontmatter upsert of {activeNote}:
 	- Invoke the `extract-headline` skill on the 'Quick Overview' section content and upsert the result to `headline`.
-	- Invoke the `model-name` skill and upsert the model name to `model`.
+	- Invoke the `model-name` skill and upsert the returned model name to `model`.
+
+#### Report template
+
+Conform to this template. Replace `<...>` placeholders; repeat the category section and its Quick Overview bullet per category, the numbered item per file, and the change bullet per change (max five).
+
+```markdown
+## Quick Overview
+
+- [[#<category heading>]] — <one-sentence main insight>
+- ...
+
+## <category heading>
+
+1. [[<file>]]  
+   > [!highlights]+ <tease>
+   > <lede>
+   >
+   > ==Why it matters==:
+   > <why it matters>
+2. [[<file>]] — **Changes:**
+   - <past-tense change>
+   - ...
+3. ...
+
+...
+
+## <category heading>
+
+1. [[<file>.canvas]]  
+   > [!highlights]+ <tease>
+   > <lede>
+   >
+   > ==Why it matters==:
+   > <why it matters>
+2. ...
+```
 
 ### Chat channel
 - Success: one line — `Report appended to {activeNote}: <n> categories, <m> of <t> files summarized.` Then, only when applicable, one line each:
@@ -96,9 +131,8 @@ Safe actions, performed without asking:
 
 - Read {activeNote} and its embedded Bases table, and read the files the table displays.
 - Run the read-only commands `history`, `history:read`, and `diff` on those files.
-- Render canvas content with `canvas-content`, read canvas properties with `canvas-frontmatter`, and apply the `smart-brevity-summary` and `extract-headline` skills.
-- Compare the two canvas renderings in memory or in scratch space outside the vault.
-- Append the finished report to {activeNote} and upsert its `headline` frontmatter property.
+- Render canvas content with `canvas-content` and compare the two canvas renderings in memory or in scratch space outside the vault.
+- Append the finished report to {activeNote} and upsert its `headline` and `model` frontmatter properties.
 
 Confirmation triggers — request confirmation in chat before performing, or decline and stop when confirmation cannot be obtained mid-run:
 
@@ -110,14 +144,12 @@ When declining: one chat line naming the in-scope alternative, conversation left
 ## Resources
 
 Skills:
-- `canvas-content`: a `.canvas` path or raw JSON → the skill's Markdown rendering; supplies current content and a history version's rendering.
-- `canvas-frontmatter`: a `.canvas` file → its `metadata.frontmatter` properties, tags included.
+- `canvas-content`: a `.canvas` path or raw JSON → its Markdown rendering; current content and history-version renderings.
 - `smart-brevity-summary`: one file's Markdown → the skill's Smart-brevity callout.
 - `extract-headline`: content → a concise headline.
-- `model-name:` Name of the executing model.
-- `obsidian-cli`: Invocation and safety rules per the skill itself.
+- `model-name`: Name of the executing model.
 
-Tool (obsidian-cli, verified on this vault, CLI 1.14.5); any call error routes to Failure & Clarification Rules:
-- `history path=<path>` → path line, then one line per version: `<version>\t<YYYY-MM-DD HH:MM>\t<size>`; version 1 is newest, timestamps descending | empty → single-day per Directives.
+Tool (obsidian-cli, verified on this vault); any call error routes to Failure & Clarification Rules:
+- `history path=<path>` → path line, then one line per version: `<version>\t<YYYY-MM-DD HH:MM>\t<size>`; version 1 is newest, timestamps descending | `No history found for this file.` → no versions; classify as single-day per Directives.
 - `history:read path=<path> version=<n>` → `<path> (version <n>, <YYYY-MM-DD HH:MM>)`, `---`, then the file at that version, verbatim (raw JSON for a canvas) | strip the first two lines before rendering with `canvas-content`.
 - `diff path=<path> from=<n>` → unified diff from version `<n>` to current: `--- <path> (Local #<from>, <timestamp>)`, `+++ <path> (current)`, body lines prefixed `+` (added), `-` (removed), or space (context) | Markdown only; a canvas is compared through its two `canvas-content` renderings.
