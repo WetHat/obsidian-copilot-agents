@@ -5,6 +5,8 @@ description: >-
   classification, tagging, headline generation, or summarization. Use for
   requests such as "what is on this canvas" or "read canvas ..."; not for
   rendering, layout edits, or creating canvases.
+compatibility: >-
+  Windows: PowerShell 5.1+; macOS/Linux: `pwsh` 7+ on `PATH`.
 metadata:
   copilot-enabled-agents: opencode
 ---

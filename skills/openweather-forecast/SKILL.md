@@ -5,6 +5,10 @@ description: Witty/funny weather forecast for a given location, using the local
   weather, forecast, temperature, rain, whether to take an umbrella, or
   today/tomorrow/weekend conditions — or explicitly asks for the OpenWeatherMap
   MCP server. Not for historical weather or climate data.
+compatibility: >-
+  Requires the OpenWeatherMap MCP server (`docker-mcp` / `openweather`) in the
+  `obsidian` MCP profile, with Docker Desktop running; the `docker mcp` CLI and
+  MCP profiles feature are needed for the CLI fallback.
 metadata:
   copilot-enabled-agents: opencode
 ---
@@ -26,10 +30,8 @@ No third-party weather sites, no external API keys.
 ### CLI fallback — only after a failed tool call
 
 Use this only when the in-session route is unavailable or the call itself
-errors. Docker Desktop must be running; the `openweather` server lives in the
-`obsidian` MCP profile. `--gateway-arg=--profile=...` requires the MCP
-profiles feature; if the flag is rejected, enable it once with
-`docker mcp feature enable profiles`.
+errors. If `--gateway-arg=--profile=...` is rejected, enable the profiles
+feature once with `docker mcp feature enable profiles`.
 
 On Windows (PowerShell):
 

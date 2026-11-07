@@ -3,6 +3,9 @@ name: canvas-frontmatter
 description: >-
   Read, set, merge, and remove properties in Obsidian Canvas frontmatter
   (`metadata.frontmatter`); not for editing nodes, edges, layout, or Markdown note frontmatter.
+compatibility: >-
+  Requires the Advanced Canvas plugin with `canvasMetadataCompatibilityEnabled`
+  enabled, and the `obsidian_cli` tool.
 metadata:
   copilot-enabled-agents: opencode
 ---
@@ -11,9 +14,8 @@ metadata:
 
 ## Requirements
 
-- The `obsidian-cli` skill
-- Canvas Enhance installed with `canvasMetadataCompatibilityEnabled` on (enabled in this vault).
 - The active file's vault-relative path.
+- Advanced Canvas compatibility mode is enabled in this vault.
 
 ## Read
 

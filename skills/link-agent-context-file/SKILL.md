@@ -5,6 +5,8 @@ description: >-
   as a wikilink aliased to its parent folder name. Use when citing an agent
   instruction file from a note, or when linking a skill or project instruction
   file; not for ordinary note links.
+compatibility: >-
+  Windows: PowerShell 5.1+; macOS/Linux: `pwsh` 7+ on `PATH`.
 metadata:
   copilot-enabled-agents: codex,opencode
 ---

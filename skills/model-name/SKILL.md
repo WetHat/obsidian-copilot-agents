@@ -4,6 +4,9 @@ description: >-
   Return the model that executes the current OpenCode session, resolved from
   OPENCODE_SESSION_ID. Use when the caller needs the executing model's name;
   the skill does not read or modify any note.
+compatibility: >-
+  Requires PowerShell 7.4+ on .NET 8+; Microsoft.Data.Sqlite and SQLitePCLRaw
+  in the NuGet cache (see Installation).
 metadata:
   copilot-enabled-agents: opencode
 ---
@@ -21,10 +24,9 @@ None. The executing session comes from `OPENCODE_SESSION_ID`.
 
 ## Requirements
 
-- PowerShell 7.4 or later on .NET 8+ (the script uses
-  `Microsoft.Data.Sqlite`, which targets .NET 8+).
-- The `Microsoft.Data.Sqlite` and `SQLitePCLRaw` packages in the NuGet cache.
-  The script loads them directly; no Python or other helper is required.
+`Microsoft.Data.Sqlite` targets .NET 8+, which is what sets the PowerShell 7.4
+floor; the script loads the package and `SQLitePCLRaw` directly from the NuGet
+cache, so no Python or other helper is required.
 
 ## Process
 
