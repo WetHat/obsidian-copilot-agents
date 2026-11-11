@@ -21,7 +21,6 @@ metadata:
 
 - **Canvas** — read the raw JSON and use `metadata.frontmatter`. Do not use `property:read` for a merge; it may return nothing after a previous write.
 - **Markdown** — read YAML frontmatter from the raw file.
-- `property:read` is safe only on a freshly indexed file and for scalar values; it does not return array values reliably.
 - Read once, before any write in the run. Merge in memory.
 
 ## Set

@@ -312,7 +312,7 @@ function Get-NormalizedCardText([string] $Text) {
     $offset = 0
     if ($minLevel -gt 0 -and $minLevel -lt 3) { $offset = 3 - $minLevel }
 
-    # Single fence-aware rewrite pass: callouts, empty layout HTML, heading
+    # Single fence-aware rewrite pass: empty layout HTML, heading
     # demotion, thematic breaks; trim trailing whitespace outside fences.
     $fenced = $false
     for ($i = 0; $i -lt $lines.Count; $i++) {
@@ -323,8 +323,7 @@ function Get-NormalizedCardText([string] $Text) {
         }
         if ($fenced) { continue }
         if ($line -match '^\s*(?:>\s*)+') {
-                    $newLine = [regex]::Replace($line, '\[![A-Za-z0-9_-]+\]', '')
-                    $newLine = [regex]::Replace($newLine, '^(\s*(?:>\s*)+)\s*[+-]\s*(?=\S)', '$1')
+                    $newLine = [regex]::Replace($line, '^(\s*(?:>\s*)+)\s*[+-]\s*(?=\S)', '$1')
                     $m = [regex]::Match($newLine, '^(\s*)((?:>\s*)+)(.*)$')
                     if ($m.Success) {
                         # one space after each '>' marker and nowhere else; the

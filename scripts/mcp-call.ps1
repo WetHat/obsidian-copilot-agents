@@ -19,7 +19,7 @@
     child processes and need a different transport.
 
 .PARAMETER Tool
-    MCP tool name, e.g. infer_content_type.
+    MCP tool name, e.g. windmill_infer_content_type.
 
 .PARAMETER Server
     Server name under mcp.servers in the config. Defaults to windmill.
@@ -42,10 +42,10 @@
     pwsh copilot/scripts/mcp-call.ps1 -ListTools
 
 .EXAMPLE
-    pwsh copilot/scripts/mcp-call.ps1 -Tool infer_content_type -Arg 'content=@AI/Agents/Foo.md'
+    pwsh copilot/scripts/mcp-call.ps1 -Tool windmill_infer_content_type -Arg 'content=@AI/Agents/Foo.md'
 
 .EXAMPLE
-    pwsh copilot/scripts/mcp-call.ps1 -Tool scrape_markdown_article -Server firecrawl -Arg 'url=https://example.com'
+    pwsh copilot/scripts/mcp-call.ps1 -Tool windmill_scrape_markdown_article -Server windmill -Arg 'url=https://example.com'
 #>
 [CmdletBinding()]
 param(
