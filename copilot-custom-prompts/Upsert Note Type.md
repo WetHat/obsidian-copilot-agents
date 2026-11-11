@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 420
 copilot-command-model-key: ""
-copilot-command-last-used: 1793623177730
+copilot-command-last-used: 1794205540655
 ---
 ## Target
 
@@ -16,7 +16,7 @@ copilot-command-last-used: 1793623177730
 
 ## Task
 
-- Invoke `infer_content_type` with the resolved content and use the `content_type.choice` property of the returned JSON object.
+- Invoke `windmill_infer_content_type` with the resolved content and use the `content_type.choice` property of the returned JSON object.
 - For **Canvas** — Use the `canvas-frontmatter` skill to set `type` as a text property on the active file.
 - For **Markdown** — use the `property:set`  from the  `obsidian-cli` skill
 

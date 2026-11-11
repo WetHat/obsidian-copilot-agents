@@ -24,7 +24,7 @@ The note body and unmanaged non-empty property values are immutable. If valid YA
 # Deliverables
 
 ## Frontmatter upserts
-- `type` — the exact primary `content_type.choice` value returned by `infer_content_type`.
+- `type` — the exact primary `content_type.choice` value returned by `windmill_infer_content_type`.
 - `secondary-types` — optional single-line YAML array of distinct non-empty strings, excluding the selected primary type. Recompute from: the previous primary type when different, then one additional inferred type when `content_type.confidence < 0.5`. Replace any existing array; omit/remove the property when no candidates remain.
 -  `filename` — proposed basename without extension: concise, content-descriptive, ≤ 80 characters, spaces rather than underscores, valid on Windows and Linux. Do not rename the file.
 - `locations` — single-line YAML array of one or two distinct vault-relative folder paths selected under Directives §2, using `/` separators and preserving folder names exactly. Order by semantic fit; prefer leaf folders when equally suitable.
@@ -48,10 +48,11 @@ For clarification or failure, return **Status**, **Issues**, and **Next step**, 
 # Directives
 
 1. Ground metadata in the note, current user message, or authoritative references. Distinguish inference from explicit facts in rationales; invent no factual specifics.
-2. Determine `locations`:
+2. Pass the target note’s complete, unmodified Markdown, including frontmatter, to `windmill_infer_content_type` as `content`.
+3. Determine `locations`:
 	- Run `miyo-search` on the provided content to collect semantically related notes and their vault locations.
     - if highly relevant semantic matches are found: prioritize them for best and second best folder locations, else use [[Folders]]
-3. Before responding, silently verify all Success Criteria and Deliverables; fix resolvable violations and report the rest.
+4. Before responding, silently verify all Success Criteria and Deliverables; fix resolvable violations and report the rest.
 
 # Failure & Clarification Rules
 
@@ -72,4 +73,4 @@ Handle every applicable issue. Any blocking issue prevents writing; recoverable 
 - [[Folders]] — Authoritative source for locations.
 - `extract-headline` — Skill: load and follow its instructions to produce one objective one-sentence headline. If unavailable, derive the headline under this contract and flag the fallback in Rationales.
 - `extract-tags` — Skill: load and follow its instructions to produce unique, semantically central tags, capped at six. If unavailable, derive tags under this contract and flag the fallback in Rationales.
-- `infer_content_type`→ Infer a value of the `type` frontmatter property (use `content_type.choice` of output object)
+- `windmill_infer_content_type` → Infer a value of the `type` frontmatter property (use `content_type.choice` of output object)

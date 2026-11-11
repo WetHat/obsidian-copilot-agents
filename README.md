@@ -131,7 +131,7 @@ The note names above are vault resources, not files in this repository.
 
 ```pwsh
 pwsh copilot/scripts/mcp-call.ps1 -ListTools
-pwsh copilot/scripts/mcp-call.ps1 -Tool infer_content_type -Arg 'content=@AI/Agents/Foo.md'
+pwsh copilot/scripts/mcp-call.ps1 -Tool windmill_infer_content_type -Arg 'content=@AI/Agents/Foo.md'
 ```
 
 `-Arg` takes `name=value` and repeats for multiple arguments; a value beginning with `@` reads that file. `-StripFrontmatter` removes YAML frontmatter from `@file` arguments, and `-Raw` prints the tool's text response verbatim. Only `remote` (HTTP/SSE) servers are supported, since `local` servers are stdio child processes and need a different transport.

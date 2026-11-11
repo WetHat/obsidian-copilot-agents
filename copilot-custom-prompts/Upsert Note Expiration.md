@@ -3,7 +3,7 @@ copilot-command-context-menu-enabled: false
 copilot-command-slash-enabled: true
 copilot-command-context-menu-order: 425
 copilot-command-model-key: ""
-copilot-command-last-used: 1793609106427
+copilot-command-last-used: 1794384741771
 ---
 # Task
 
@@ -43,8 +43,8 @@ Review the active note (`{activeNote}`) for content no longer true today: strike
 2. Read the raw file; inventory its time-bound statements — dates, intervals, "current/latest/as of", versions, prices, availability, predictions — with the anchor each rests on.
 3. Strike only under one evidence tier, in order:
    - **Anchor expired** — the note dates the claim: an announcement, window, deadline, or prediction whose period ended, or a present-tense "current/latest/as of" claim pinned to a passed date.
-   - **Source shift** — re-reading the note's `link` with `scrape_markdown_article` shows the passage superseded or contradicted.
-   - **World state** — for a claim about what is current: ≤3 `firecrawl_search` queries, striking only on a result from the last 12 months.
+   - **Source shift** — re-reading the note's `link` with `windmill_scrape_markdown_article` shows the passage superseded or contradicted.
+   - **World state** — for a claim about what is current: ≤3 `firecrawl_firecrawl_search` queries, striking only on a result from the last 12 months.
    Doubt no tier settles stays unstruck, listed under **Left unmarked**.
 4. Strike the note's own assertions only; quoted, reproduced, and code material records a source, not the note's claim.
 5. Strike the smallest false span: the clause inside an otherwise sound line, or the whole line when every clause is false. Keep the original wording, never strike a list marker, heading, or existing strike, and never nest or reopen a pair. Where the evidence also establishes the replacement, append it immediately after the closing delimiter as italics — `~~old~~ *new*`. Keep it to one short clause, plain text, no citation; otherwise leave the strike bare.
@@ -72,8 +72,8 @@ Review the active note (`{activeNote}`) for content no longer true today: strike
 
 - Skill `obsidian-markdown` — `~~`, frontmatter, property syntax; load before editing.
 - Skill `obsidian-cli` — `property:read` / `property:set`; on failure, edit the frontmatter line.
-- `scrape_markdown_article(url)` → article Markdown | failure → skip the source-shift tier.
-- `firecrawl_search(query)` → results | failure or off-topic → leave the claim unmarked.
+- `windmill_scrape_markdown_article(url)` → article Markdown | failure → skip the source-shift tier.
+- `firecrawl_firecrawl_search(query)` → results | failure or off-topic → leave the claim unmarked.
 
 # Example
 
