@@ -133,6 +133,9 @@ function Get-SqliteAssemblies([string] $Root) {
 
 function Initialize-Sqlite($Assemblies) {
   $env:PATH = "$($Assemblies.NativeDir);$env:PATH"
+  # .NET resolves DllImport names without consulting PATH; preloading the native
+  # library by absolute path makes the bare name bind to the loaded module.
+  [void][System.Runtime.InteropServices.NativeLibrary]::Load($Assemblies.Native)
   if (-not ('SQLitePCL.Batteries_V2' -as [type])) {
     Add-Type -Path $Assemblies.Core | Out-Null
     Add-Type -Path $Assemblies.Provider | Out-Null
