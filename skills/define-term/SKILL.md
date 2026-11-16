@@ -102,7 +102,7 @@ Evidence may come from the vault or web to support the definition, never to rein
 ## Tools
 
 - `miyo_search` — vault search for notes that already define the term.
-- `obsidian-cli` — indexed vault state (links, backlinks) when locating a definition by reference.
+- `obsidian_cli` — indexed vault state (links, backlinks) when locating a definition by reference.
 - `windmill_scrape_markdown_article` — fetch one known URL; prefer the vault's configured scrape flow.
 - `firecrawl` search tools — find candidate URLs; a search snippet locates a source but never counts as inspected.
 - Wikipedia MCP suite — corroboration only; never the sole external citation.

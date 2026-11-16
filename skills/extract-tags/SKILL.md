@@ -21,7 +21,7 @@ One plain-text, comma-separated list of tags with no spaces or Markdown. Sort ta
 
 ## Resources
 
-- `obsidian-cli` — the only source of existing vault tags and their frequencies.
+- `obsidian_cli` — the only source of existing vault tags and their frequencies.
   Read the inventory with `obsidian tags counts sort=count format=json` and strip
   the leading `#` from each tag.
 
