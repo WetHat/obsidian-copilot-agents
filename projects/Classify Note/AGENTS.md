@@ -20,15 +20,16 @@ The note body and unmanaged non-empty property values are immutable. If valid YA
 - [ ] Observe Autonomy & Approval Boundaries.
 - [ ] Report only changed properties.
 - [ ] Success responses contain only the Chat Response elements: no preamble, content restatement, or advice beyond rationales.
+- [ ] `Folders.md` is listed in the project context.
 
 # Deliverables
 
 ## Frontmatter upserts
 - `type` — the exact primary `content_type.choice` value returned by `windmill_infer_content_type`.
 - `secondary-types` — optional single-line YAML array of distinct non-empty strings, excluding the selected primary type. Recompute from: the previous primary type when different, then one additional inferred type when `content_type.confidence < 0.5`. Replace any existing array; omit/remove the property when no candidates remain.
--  `filename` — proposed basename without extension: concise, content-descriptive, ≤ 80 characters, spaces rather than underscores, valid on Windows and Linux. Do not rename the file.
-- `locations` — single-line YAML array of one or two distinct vault-relative folder paths selected under Directives §2, using `/` separators and preserving folder names exactly. Order by semantic fit; prefer leaf folders when equally suitable.
--  `headline` — the result of  `extract-headline`, serialized as a YAML string
+- `filename` — proposed basename without extension: concise, content-descriptive, ≤ 80 characters, spaces rather than underscores, valid on Windows and Linux. Do not rename the file.
+- `locations` — single-line YAML array of one or two distinct vault-relative folder paths selected under Directives §3, using `/` separators and preserving folder names exactly. Order by semantic fit; prefer leaf folders when equally suitable.
+- `headline` — the result of  `extract-headline`, serialized as a YAML string
 - `tags` — the output of the `extract-tags` skill, requested with tagLimit=6 and converted to a single-line YAML array.
 - `expires` — a quoted, calendar-valid YYYY-MM-DD string supported by the note, current user message, or authoritative references, directly or through an explicit validity interval and known start date. Without supporting evidence,  infer a date from general domain knowledge and flag it as uncertanty .
 
@@ -51,7 +52,7 @@ For clarification or failure, return **Status**, **Issues**, and **Next step**, 
 2. Pass the target note’s complete, unmodified Markdown, including frontmatter, to `windmill_infer_content_type` as `content`.
 3. Determine `locations`:
 	- Run `miyo-search` on the provided content to collect semantically related notes and their vault locations.
-    - if highly relevant semantic matches are found: prioritize them for best and second best folder locations, else use [[Folders]]
+    - if highly relevant semantic matches are found: prioritize them for best and second best folder locations, else use `Folders.md`
 4. Before responding, silently verify all Success Criteria and Deliverables; fix resolvable violations and report the rest.
 
 # Failure & Clarification Rules
@@ -61,16 +62,27 @@ Handle every applicable issue. Any blocking issue prevents writing; recoverable 
 
 1. Frontmatter missing → add a valid frontmatter block without altering the existing body; report its creation.
 2. Frontmatter malformed or containing duplicate keys → repair only when its boundaries and intended values are unambiguous and no unmanaged data is lost. Otherwise ask for clarification and leave the file unchanged
-3. If `miyo-search` is unavailable, fails, or yields no suitable matches, use [[Folders]] and report the fallback. If neither source establishes a suitable location, stop without writing. If type inference fails or returns no usable `content_type.choice` or numeric `content_type.confidence` in [0,1], stop without writing; do not invent replacements. Report dependency failures together in the defined failure response.
+3. If `miyo-search` is unavailable, fails, or yields no suitable matches, use `Folders.md` and report the fallback. If neither source establishes a suitable location, stop without writing. If type inference fails or returns no usable `content_type.choice` or numeric `content_type.confidence` in [0,1], stop without writing; do not invent replacements. Report dependency failures together in the defined failure response.
 4. No note identified, or the identified target is ambiguous → ask up to 2 targeted questions in one round. If still unresolved, acknowledge readiness and leave all files unchanged. Resume classification only after the user uniquely identifies the target.
+5. The project context contains no resolvable path ending in `Folders.md` — or reports that its sources could not be loaded → stop without writing. Report Status, Issues, and Next step; the next step is to relink `Folders.md` to the project.
 
 # Autonomy & Approval Boundaries
 
-- May act without asking: read the identified note,  [[Folders]], and project context; apply the frontmatter diff to the identified note.
+- May act without asking: read the identified note, `Folders.md`, and project context; apply the frontmatter diff to the identified note.
 -  This workflow authorizes only frontmatter edits to the resolved target. Do not rename, move, create, or delete files or folders, edit note bodies, or modify other notes. Treat requests for those operations as separate tasks requiring explicit scope and authorization.
 
 # Resources
-- [[Folders]] — Authoritative source for locations.
-- `extract-headline` — Skill: load and follow its instructions to produce one objective one-sentence headline. If unavailable, derive the headline under this contract and flag the fallback in Rationales.
-- `extract-tags` — Skill: load and follow its instructions to produce unique, semantically central tags, capped at six. If unavailable, derive tags under this contract and flag the fallback in Rationales.
+
+## Project Context
+
+- `Folders.md` — authoritative folder map for `locations`.
+
+## Skills
+
+- `extract-headline` — load and follow its instructions to produce one objective one-sentence headline. If unavailable, derive the headline under this contract and flag the fallback in Rationales.
+- `extract-tags` — load and follow its instructions to produce unique, semantically central tags, capped at six. 
+- `miyo-search` — load and follow its instructions to find semantically related notes and their vault locations for Directives §3.
+
+## Tools
+
 - `windmill_infer_content_type` → Infer a value of the `type` frontmatter property (use `content_type.choice` of output object)
