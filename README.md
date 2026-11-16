@@ -13,7 +13,7 @@ This repository is a curated collection of reusable AI-assistant assets for use 
 ├── copilot-custom-prompts/       # 40 slash-command / context-menu prompts
 ├── projects/                     # 7 Copilot projects (project.md + optional AGENTS.md)
 ├── scripts/mcp-call.ps1          # Generic caller for remote MCP tools
-├── system-prompts/               # Migrated custom system prompts
+├── system-prompts/               # Migrated custom system prompt
 ├── .gitignore                    # Excludes local-only assets (see below)
 ├── README.md
 └── LICENSE                       # MIT
@@ -21,7 +21,7 @@ This repository is a curated collection of reusable AI-assistant assets for use 
 
 # Configuration
 
-No MCP configuration file is tracked. The three servers the assets expect are registered in the Obsidian Copilot plugin's own settings (`customConnectors` in `.obsidian/plugins/copilot/data.json`), which is vault-local and not part of this repository:
+No MCP configuration file is tracked. The three servers the assets expect are registered in the vault's Obsidian Copilot plugin settings (`customConnectors` in `.obsidian/plugins/copilot/data.json`), which is vault-local and not part of this repository:
 
 | Server | Type | Launch |
 | --- | --- | --- |
@@ -41,7 +41,7 @@ No MCP configuration file is tracked. The three servers the assets expect are re
 - The local Miyo skills (`miyo-parse`, `miyo-search`) and the publish integrations (`symposium-publish`, `openartifacts-*`).
 - Anything matching `*_legacy*`, and per-project build artifacts under `projects/*/outputs/`.
 
-A working vault therefore shows more folders under `skills/` than this repository tracks: 18 directories locally, 12 of them tracked. The counts and tables below describe only the tracked set.
+A working vault therefore shows more folders under `skills/` than this repository tracks. The counts and tables below describe only the tracked set.
 
 # Skills
 
@@ -105,9 +105,9 @@ Filenames use emoji prefixes as a visual grouping cue in the Copilot UI:
 | Prefix | Count | Contents |
 | --- | --- | --- |
 | 🎓 | 3 | Analysis and learning — article evaluation, archetype ranking, image prompts. |
-| 🖊️ | 15 | Writing, rewriting, and transformation — rewrite variants, translations, simplification, abstracts, definitions, LaTeX, tables, diagrams, emojification. |
+| 🖊️ | 15 | Writing, rewriting, and transformation — rewrite variants (longer, shorter, tweet, structured Markdown, definition, LaTeX, sorted definition list), translations, simplification, abstracts, Mermaid concept maps, emojification, code-snippet explanation, Jeopardy-style questions. |
 | 📩 | 1 | PDF intake — `PDF to Markdown`. |
-| — | 21 | Note and repository tooling — frontmatter upserts for headline, tags, type, and expiration; folder notes; cited term definitions; PDF outlines, tables of contents, and takeaways; prompt and skill audits; tool inventory; GitHub repo annotation; journal summaries; Flipboard sharing; bookmarking; workload reporting. |
+| — | 21 | Note and repository tooling — frontmatter upserts for headline, tags, type, and expiration; folder notes; cited term definitions; PDF outlines, tables of contents, and takeaways; tool inventory; GitHub repo annotation; journal summaries; Flipboard sharing; bookmarking; model ranking; workload reporting; diagram and canvas generation; code-block and table rewrites; grammar fixes. |
 
 The filenames in `copilot-custom-prompts/` are the authoritative prompt inventory.
 
@@ -142,7 +142,7 @@ pwsh copilot/scripts/mcp-call.ps1 -Tool windmill_infer_content_type -Arg 'conten
 
 # System Prompts
 
-`system-prompts/` holds migrated custom system prompts. `Migrated Custom System Prompt.md` defines two context-specific overrides: an included "Obsidian flavored Markdown" section takes absolute precedence over conflicting formatting guidance, and the `|>` operator invokes a skill on its left operand, so `"Some text" |> ExtractTakeaways(listLimit=2)` is executed and replaced by its result before rendering.
+`system-prompts/` holds the migrated custom system prompt. `Migrated Custom System Prompt.md` defines two context-specific overrides: an included "Obsidian flavored Markdown" section takes absolute precedence over conflicting formatting guidance, and the `|>` operator invokes a skill on its left operand, so `"Some text" |> ExtractTakeaways(listLimit=2)` is executed and replaced by its result before rendering.
 
 # License
 
